@@ -1,0 +1,37 @@
+language: ruby
+cache: bundler
+rvm:
+- 2.1.2
+env:
+  global:
+  - AMAZON_S3_BUCKET=slnz_bundle_cache
+  - AMAZON_ACCESS_KEY_ID=AKIAJ2RJ725WNKE5RGLQ
+  - secure: aio09MnipVRv1YsvMT6m0terclm8XrPk2o4wIWLBR7ct0fQZV2tyzOrEg30WnkOJNNlB2lH9oRfqY1a177dqPyocLz1XmBeb0svZ8R+wrgTnKT5oALliYCbU/aIkAh/M01duU+E8N1jDkjjmOJnmsYczRrjPDQii5HWNtaMBCgg=
+  - SECRET_KEY_BASE=1234567890
+  - RAILS_ENV=test
+before_install:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+install:
+- travis_retry script/cached-bundle install --deployment --without development
+before_script:
+- cp config/database.travis.yml config/database.yml
+- psql -c 'create database growthspaces_test;' -U postgres
+- bundle exec rake db:migrate RAILS_ENV=test
+script:
+- bundle exec rake
+- bundle exec rubocop
+deploy:
+  provider: heroku
+  strategy: git
+  app:
+    stage: dmpd-staging
+    master: dmpd-production
+  run:
+  - rake db:migrate
+  - restart
+  - rake cleanup
+  on:
+    repo: slnz/dmpd
+  api_key:
+    secure: coCNeBPUG8HyoU2zyARDNhNCjqCw5kRSr8wJvoJAI7hob2EnEpsYqIwkEFuVXKA006ARWFPx21czOCILHA61qvoL5DvyAQPZKuieXe8OIpEJK3ZGP4yrKRu89WD/ifWPMGb88XSIKNbBe0hhXTfoj0fRZAOH0+BfiKqt2vAcQig=
