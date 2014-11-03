@@ -5,7 +5,6 @@ Mail.register_interceptor(
 )
 
 Rails.application.configure do
-  # ...
-
-  config.action_mailer.default_url_options = { host: 'staging.dmpd.com' }
+  config.action_mailer.default_url_options =
+    { host: 'stage.dmpd.staffportal.org' }
 end
