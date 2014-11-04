@@ -1,0 +1,32 @@
+.navbar {
+  border-radius: 0;
+  border: 0;
+  &.navbar-inverse {
+    background-color: #549abd;
+  }
+  .navbar-brand {
+    font-weight: lighter;
+    color: #fff;
+    img {
+      float: left;
+      width: 40px;
+      margin-top: -10px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.high_voltage-pages {
+  .navbar {
+    height: 120px;
+    .container-fluid {
+      @extend .container;
+    }
+    .navbar-brand {
+      font-size: 30px;
+      img {
+        width: 90px;
+      }
+    }
+  }
+}
