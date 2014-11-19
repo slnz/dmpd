@@ -1,4 +1,4 @@
-test:
+test: &default
   adapter: postgresql
   database: dmpd_test
   encoding: utf8
@@ -6,3 +6,5 @@ test:
   min_messages: warning
   pool: 2
   timeout: 5000
+staffportal_test:
+  <<: *default
