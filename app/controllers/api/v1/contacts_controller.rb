@@ -42,7 +42,8 @@ module Api
       def destroy
         load_contact
         @contact.destroy
-        redirect_to contacts_path
+        decorate_contact
+        render :show
       end
 
       def status(statuses = [])

@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/MethodLength, Metrics/ClassLength
 module Api
   module V1
     module Contacts
@@ -90,7 +91,7 @@ module Api
             transition: @transition
           ) if log
           @step = step
-          @contact.send "#{@transition.to_s}!" if @transition
+          @contact.send "#{@transition}!" if @transition
           @call.send "#{@step}!"
           end_call if step == :end
         end

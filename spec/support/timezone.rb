@@ -23,12 +23,9 @@ module TimeZoneHelpers
     def across_time_zones(options, &block)
       options.assert_valid_keys(:step)
       step_seconds = options.fetch(:step)
-      offsets =
-        ActiveSupport::TimeZone.all
-        .group_by(&:utc_offset)
-        .sort_by { |off, _zones| off }
-      last_offset = -10.days # far enough in the past
-      offsets.each do |(current_offset, zones)|
+      offsets = ActiveSupport::TimeZone.all.group_by(&:utc_offset)
+      last_offset = -10.days
+      offsets.sort_by { |off, _zones| off }.each do |(current_offset, zones)|
         next unless (current_offset - last_offset) >= step_seconds
         last_offset = current_offset
         context_with_time_zone(zones.sample, &block)
