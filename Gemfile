@@ -1,14 +1,16 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.1.4'
 
 gem 'airbrake'
 gem 'bourbon', '~> 3.2.1'
 gem 'coffee-rails'
 gem 'delayed_job_active_record'
 gem 'email_validator'
+gem 'phony_rails'
+gem 'kaminari'
+gem 'has_scope'
 gem 'flutie'
-gem 'high_voltage'
 gem 'i18n-tasks'
 gem 'pg'
 gem 'rack-timeout'
@@ -24,6 +26,11 @@ gem 'draper'
 gem 'devise'
 gem 'devise_cas_authenticatable'
 gem 'bower-rails'
+gem 'angular-rails-templates'
+gem 'versionist'
+gem 'ransack'
+gem 'rabl-rails'
+gem 'wicked'
 
 group :development do
   gem 'spring'
@@ -34,6 +41,8 @@ group :development do
   gem 'guard-rails'
   gem 'guard-bundler'
   gem 'guard-puma'
+  gem 'guard-rake'
+  gem 'guard-coffeelint'
   gem 'rb-fsevent', require: false
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -54,6 +63,7 @@ end
 
 group :test do
   gem 'capybara-webkit', '>= 1.2.0'
+  gem 'capybara-screenshot'
   gem 'database_cleaner'
   gem 'formulaic'
   gem 'launchy'
@@ -61,6 +71,7 @@ group :test do
   gem 'codeclimate-test-reporter', require: nil
   gem 'simplecov'
   gem 'timecop'
+  gem 'faker'
   gem 'webmock'
   gem 'vcr'
 end

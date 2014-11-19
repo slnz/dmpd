@@ -1,0 +1,29 @@
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header pull-right">
+      <a class="navbar-brand" href="#"><%= image_tag 'logo.png' %>DMPD</a>
+    </div>
+    <div id="dmpd-navbar" ng-controller="TopbarController">
+      <div class="call-session" ng-show="callSession.start_time">
+        <a ui-sref="call_session">Call session started <span am-time-ago="callSession.start_time" am-preprocess="unix"></span></a>
+        <a class="closetab" ng-click="endSession()" href="#">
+          <i class="fa fa-times"></i>
+        </a>
+      </div>
+      <ul class="nav navbar-nav topbar">
+        <li ui-sref-active="active" ng-repeat="contact in contacts">
+          <a class="contact" ui-sref="contacts.show({id: contact.id})">
+            <i class="fa fa-user"></i>
+            {{contact.first_name}} {{contact.last_name}}
+          </a>
+          <a class="closetab" ng-click="closeTab(contact.id)">
+            <i class="fa fa-times"></i>
+          </a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      </ul>
+    </div>
+  </div>
+</nav>

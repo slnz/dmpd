@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html ng-App="dmpd">
 <head>
+  <base href="/">
   <meta charset="utf-8" />
   <meta name="ROBOTS" content="NOODP" />
   <meta name="viewport" content="initial-scale=1" />
-  <title><%= title %></title>
+  <title>DMPD</title>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300,400' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag :application, media: "all" %>
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= body_class %>">
-  <%= render "flashes" -%>
-  <%= render "navbar" -%>
+  <%= render "navigation" -%>
   <%= yield %>
+  <footer>
+      <blockquote>
+        <p>The horse is made ready for the day of battle, but victory rests with the Lord.</p>
+        <footer>NIV <cite title="Proverbs 21:31">Proverbs 21:31</cite></footer>
+      </blockquote>
+  </footer>
   <%= render "javascript" %>
 </body>
 </html>

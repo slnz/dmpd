@@ -1,0 +1,77 @@
+<div class="pane modal-box">
+  <div class="content">
+    <div class="modal-pane left contact-card">
+      <h1>
+        <i class="fa fa-user"></i>
+        {{contact.first_name}} {{contact.last_name}}
+        <div class="pull-right">
+          {{contact.priority_code}}
+        </div>
+      </h1>
+      <ul class="list-unstyled">
+        <li>
+          <h2>Reason For Calling</h2>
+          {{contact.status}}
+        </li>
+        <li ng-show="contact.primary_phone">
+          <h2>Primary Phone</h2>
+          <i class="fa fa-phone"></i>
+          {{contact.primary_phone}}
+        </li>
+        <li ng-show="contact.referer_name">
+          <h2>Referer</h2>
+          <i class="fa fa-user"></i>
+          {{contact.referer_name}}
+        </li>
+        <li ng-show="contact.how_knows">
+          <h2>How Knows</h2>
+          <i class="fa fa-cloud"></i>
+          {{contact.how_knows}}
+        </li>
+        <li ng-show="contact.home_phone">
+          <h2>Home Phone</h2>
+          <i class="fa fa-phone"></i>
+          {{contact.home_phone}}
+        </li>
+        <li ng-show="contact.office_phone">
+          <h2>Office Phone</h2>
+          <i class="fa fa-phone"></i>
+          {{contact.office_phone}}
+        </li>
+        <li ng-show="contact.address">
+          <h2>Address</h2>
+          <i class="fa fa-map-marker"></i>
+          {{contact.address}}
+        </li>
+        <li ng-show="contact.church">
+          <h2>Church</h2>
+          <i class="fa fa-home"></i>
+          {{contact.church}}
+        </li>
+        <li ng-show="contact.occupation">
+          <h2>Occupation</h2>
+          <i class="fa fa-briefcase"></i>
+          {{contact.occupation}}
+        </li>
+      </ul>
+    </div>
+    <div class="smile">
+      <img ng-src="{{media}}" width="330" height="247" />
+      <h1>Smile</h1>
+      <a class="new-photo" ng-click="activeCamera=true">
+          <i class="fa fa-camera fa-inverse"></i>
+      </a>
+    </div>
+    <ng-camera
+      type="photo"
+      enabled="activeCamera"
+      width="330"
+      height="247"
+      countdown="3"
+      ng-model="media"
+      ng-show="activeCamera"
+      capture="activeCamera = false"
+      capture-message="Go!"></ng-camera>
+    <div ui-view class="modal-pane right"></div>
+  </div>
+</div>

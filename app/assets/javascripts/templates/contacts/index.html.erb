@@ -1,0 +1,21 @@
+<h1>My Contacts</h1>
+<table class="table table-hover" ng-table="tableParams">
+  <tbody>
+    <tr ng-repeat="contact in $data">
+      <td data-title="'Code'">
+        {{contact.priority_code}}
+      </td>
+      <td data-title="'Name'">
+        <a ui-sref="contacts.show({id: contact.id})">{{contact.name}}</a>
+      </td>
+      <td data-title="'Primary Phone'">
+        +{{contact.primary_phone}}
+      </td>
+    </tr>
+    <tr ng-hide="$data.length">
+      <td>
+        No contacts in this state
+      </td>
+    </tr>
+  </tbody>
+</table>

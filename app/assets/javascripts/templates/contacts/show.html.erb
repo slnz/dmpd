@@ -1,0 +1,111 @@
+<form novalidate ng-submit="updateContact()" name="form">
+  <div class='form-title'>
+    {{contact.first_name}}
+    {{contact.last_name}}
+  </div>
+  <div class='row'>
+    <div class='col-sm-5 form-group' ng-class="errorClass('first_name')">
+      <label class='control-label'>First Name *</label>
+      <input type="text" name="first_name" class="form-control" ng-model="contact.first_name" /><span class="form-error" ng-show="form.first_name.$invalid && form.first_name.$dirty">{{errorMessage('first_name')}}</span>
+    </div>
+    <div class='col-sm-5 form-group'>
+      <label class='control-label'>Last Name *</label>
+      <input name="last_name" type="text" class="form-control" ng-model="contact.last_name" /><span class="form-error" ng-show="form.last_name.$invalid && form.last_name.$dirty">{{errorMessage('last_name')}}</span>
+    </div>
+    <div class='col-sm-2 form-group'>
+      <label class='control-label'>Priority Code *</label>
+      <select name="priority_code" type="text" class="form-control" ng-model="contact.priority_code">
+        <% Contact.priority_codes.each do |key, value| %>
+          <option value="<%= key %>"><%= key %></option>
+        <% end %>
+      </select>
+      <span class="form-error" ng-show="form.priority_code.$invalid && form.priority_code.$dirty">{{errorMessage('priority_code')}}</span>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-10 form-group'>
+      <label class='control-label'>Email</label>
+      <input name="email" type="text" class="form-control" ng-model="contact.email" /><span class="form-error" ng-show="form.email.$invalid && form.email.$dirty">{{errorMessage('email')}}</span>
+    </div>
+    <div class='col-md-2 form-group'>
+      <label class='control-label'>Status *</label>
+      <select name="status" type="text" class="form-control" ng-model="contact.status">
+        <% Contact.statuses.each do |key, value| %>
+          <option value="<%= key %>"><%= key.titleize %></option>
+        <% end %>
+      </select>
+      <span class="form-error" ng-show="form.status.$invalid && form.status.$dirty">{{errorMessage('status')}}</span>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-4 form-group'>
+      <label class='control-label'>Primary Phone *</label>
+      <input name="primary_phone" type="text" class="form-control" ng-model="contact.primary_phone" /><span class="form-error" ng-show="form.primary_phone.$invalid && form.primary_phone.$dirty">{{errorMessage('primary_phone')}}</span>
+    </div>
+    <div class='col-sm-4 form-group'>
+      <label class='control-label'>Home Phone</label>
+      <input name="home_phone" type="text" class="form-control" ng-model="contact.home_phone" /><span class="form-error" ng-show="form.home_phone.$invalid && form.home_phone.$dirty">{{errorMessage('home_phone')}}</span>
+    </div>
+    <div class='col-sm-4 form-group'>
+      <label class='control-label'>Office Phone</label>
+      <input name="office_phone" type="text" class="form-control" ng-model="contact.office_phone" /><span class="form-error" ng-show="form.office_phone.$invalid && form.office_phone.$dirty">{{errorMessage('office_phone')}}</span>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-12 form-group'>
+      <label class='control-label'>Address</label>
+      <input name="address" type="text" class="form-control" ng-model="contact.address" /><span class="form-error" ng-show="form.address.$invalid && form.address.$dirty">{{errorMessage('address')}}</span>
+    </div>
+  </div>
+  <div class='form-title'>
+    Additional Information
+  </div>
+  <div class='row'>
+    <div class='col-sm-6 form-group'>
+      <label class='control-label'>Referer</label>
+      <select chosen name="referer_id" type="text" class="form-control" ng-model="contact.referers" data-placeholder="Choose a Referer" no-results-text="'Could not find any Referers'" ng-options="referer.id as referer.name for referer in referers">
+      </select>
+
+      <span class="form-error" ng-show="form.referer.$invalid && form.referer.$dirty">{{errorMessage('referer_id')}}</span>
+    </div>
+    <div class='col-sm-6 form-group'>
+      <label class='control-label'>How Knows</label>
+      <input name="how_knows" type="text" class="form-control" ng-model="contact.how_knows" /><span class="form-error" ng-show="form.how_knows.$invalid && form.how_knows.$dirty">{{errorMessage('how_knows')}}</span>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-6 form-group'>
+      <label class='control-label'>Occupation</label>
+      <input name="occupation" type="text" class="form-control" ng-model="contact.occupation" /><span class="form-error" ng-show="form.occupation.$invalid && form.occupation.$dirty">{{errorMessage('occupation')}}</span>
+    </div>
+    <div class='col-sm-4 form-group'>
+      <label class='control-label'>Church</label>
+      <input name="church" type="text" class="form-control" ng-model="contact.church" /><span class="form-error" ng-show="form.church.$invalid && form.church.$dirty">{{errorMessage('church')}}</span>
+    </div>
+    <div class='col-sm-2 form-group'>
+      <label class='control-label'>New Church</label>
+      <input type="checkbox" name="new_church" class="form-control" ng-model="contact.new_church" /><span class="form-error" ng-show="form.new_church.$invalid && form.new_church.$dirty">{{errorMessage('new_church')}}</span>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-6 form-group'>
+      <label class='control-label'>Children</label>
+      <input name="children" type="text" class="form-control" ng-model="contact.children" /><span class="form-error" ng-show="form.children.$invalid && form.children.$dirty">{{errorMessage('children')}}</span>
+    </div>
+    <div class='col-sm-6 form-group'>
+      <label class='control-label'>Anniversary</label>
+      <input name="anniversary" type="text" class="form-control" ng-model="contact.anniversary" /><span class="form-error" ng-show="form.anniversary.$invalid && form.anniversary.$dirty">{{errorMessage('anniversary')}}</span>
+    </div>
+  </div>
+  <div class="form-actions clearfix">
+    <div class="success pull-left"
+         ng-show="form.$pristine">
+      <i class="fa fa-check-circle"></i> Saved
+    </div>
+    <div class="warning pull-left" ng-hide="form.$pristine"><i class="fa fa-times-circle"></i> Pending</div>
+    <a ng-disabled="form.$pristine" ng-click="reset()" class="btn btn-default">Reset</a>
+    <input ng-disabled="form.$pristine" type="submit" class="btn btn-primary" value="Save" />
+  </div>
+</form>
+
+<div ui-view ng-show="$state.current.name == 'contacts.show.appointments' || $state.current.name == 'contacts.show.callbacks'" class="pane right-overlay"></div>

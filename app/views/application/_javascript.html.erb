@@ -1,8 +1,17 @@
+<!--[if lt IE 9]>
+  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<![endif]-->
+
+<%= javascript_tag do %>
+  window.current_user = <%= current_user.to_json.html_safe %>;
+<% end %>
+
 <%= javascript_include_tag :application %>
 
 <%= yield :javascript %>
 
 <%= render "analytics" %>
+
 
 <% if Rails.env.test? %>
   <%= javascript_tag do %>

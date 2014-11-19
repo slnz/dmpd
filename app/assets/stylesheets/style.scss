@@ -1,3 +1,22 @@
+body > footer {
+  z-index: 10;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: darken(white, 2%);
+  border-top: 1px solid #ccc;
+  text-align: right;
+  height: 75px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  blockquote {
+    margin-bottom: 0;
+    border: 0;
+  }
+}
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 .navbar {
   border-radius: 0;
   border: 0;
@@ -15,18 +34,596 @@
     }
   }
 }
-
-.high_voltage-pages {
-  .navbar {
-    height: 120px;
-    .container-fluid {
-      @extend .container;
-    }
-    .navbar-brand {
-      font-size: 30px;
-      img {
-        width: 90px;
+.card {
+  padding: 50px;
+  background-color: darken(white, 3%);
+  color: darken(white, 50%);
+  text-align: center;
+  font-size: 20px;
+  line-height: 40px;
+  margin-bottom: 20px;
+  .fa-stack {
+    margin: 0 auto;
+    width: 200px;
+    display: block;
+    font-size: 100px;
+    color: darken(white, 10%);
+  }
+}
+.label {
+  font-weight: normal;
+  text-transform: uppercase;
+  color: #444;
+}
+.label-base {
+  background-color: #fff690;
+}
+.label-callback {
+  background-color: #c9ff90;
+}
+.pane {
+  &.modal-box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 75px;
+    top: 0;
+    background-color: #000;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 10;
+    .content {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #fff;
+      margin: 10px 10px 10px 10px;
+      font-size: 14px;
+      line-height: 24px;
+      ng-camera {
+        height: 247px;
+        width: 330px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-color: #fff;
+        .ng-camera-controls {
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+        }
+        .ng-camera-countdown {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          top: 0;
+          right: 0;
+          line-height: 247px;
+          text-align: center;
+          font-size: 50px;
+          text-transform: uppercase;
+          color: #fff;
+          text-shadow: 0px 0px 3px rgba(150, 150, 150, 1);
+        }
       }
+      .smile {
+        height: 247px;
+        width: 330px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        text-shadow: 0px 0px 3px rgba(150, 150, 150, 1);
+        h1 {
+          color: #fff;
+          font-size: 30px;
+          margin: 0;
+          text-transform: uppercase;
+          position: absolute;
+          left: 10px;
+          bottom: 10px;
+        }
+        .new-photo {
+          position: absolute;
+          right: 15px;
+          bottom: 10px;
+        }
+      }
+      .modal-pane {
+          position: absolute;
+          padding: 20px;
+          left:0;
+          bottom: 0;
+          top: 0;
+          overflow-x: hidden;
+        &.left {
+          width: 330px;
+          background-color: #f8f8f8;
+          &.contact-card {
+            bottom: 247px;
+            padding: 50px 0 0 0;
+            background-color: #182025;
+            > h1 {
+              text-align: center;
+              display: block;
+              background-color: #00a57a;
+              color: #fff;
+              font-size: 18px;
+              padding: 16px;
+              margin: 0;
+              position: fixed;
+              top: 10px;
+              left: 10px;
+              width: 330px;
+              line-height: 20px;
+              i {
+                font-size: 20px;
+                float: left;
+              }
+            }
+            ul {
+              li {
+                color: #fff;
+                font-size: 18px;
+                padding: 16px 0;
+                margin: 0 16px;
+                border-bottom: 2px solid #22292d;
+                h2 {
+                  font-size: 14px;
+                  margin: 0 0 10px 0;
+                  color: darken(white, 20%);
+                }
+              }
+            }
+          }
+        }
+        &.right {
+          right: 0;
+          left: 330px;
+          overflow-x: hidden;
+        }
+      }
+    }
+  }
+  &.center {
+    overflow-x: hidden;
+    background-color: #f8f8f8;
+    position: fixed;
+    bottom: 75px;
+    top: 50px;
+    left: 60px;
+    right: 0;
+    padding: 20px;
+    > .call-session-contacts {
+      margin-top: 10px;
+      > .contact {
+        margin-bottom: 20px;
+        > a {
+          cursor: pointer;
+          &:hover {
+            background-color: #ebebeb;
+          }
+        }
+        > a, > div {
+          display: block;
+          padding: 9px 15px 9px 10px;
+          text-decoration: none;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          color: #555;
+          background-color: #fff;
+          font-size: 14px;
+          height: 75px;
+          &.none {
+            color: #999;
+          }
+          border-left: 5px solid #ccc;
+          &.base {
+            border-left-color: #fff690;
+          }
+          &.callback {
+            border-left-color: #c9ff90;
+          }
+          &.appointment {
+            border-left-color: #d1e8f5;
+          }
+          &.maintain {
+            border-left-color: #ffd190;
+          }
+        }
+        > div {
+          .btn-block {
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+  }
+  &.left {
+    overflow-x: hidden;
+    width: 330px;
+    background-color: #f8f8f8;
+    position: fixed;
+    bottom: 75px;
+    top: 50px;
+    left: 60px;
+    > h1 {
+      font-size: 14px;
+      color: #555;
+      font-weight: bold;
+      border-bottom: 1px solid #ddd;
+      padding: 24px 0 5px 0;
+      margin: 0 30px;
+    }
+    > ul.contacts {
+      padding: 15px;
+      > li {
+        border-left: 5px solid #ccc;
+        &.base {
+          border-left-color: #fff690;
+        }
+        &.callback {
+          border-left-color: #c9ff90;
+        }
+        &.appointment {
+          border-left-color: #d1e8f5;
+        }
+        &.maintain {
+          border-left-color: #ffd190;
+        }
+        h4 {
+          border-bottom: 1px solid #efefef;
+          margin: 10px 15px 0 10px;
+          font-size: 14px;
+          text-transform: uppercase;
+          font-weight: bold;
+          padding: 5px 0;
+        }
+        > ul {
+          > li {
+            a {
+              display: block;
+              padding: 9px 15px 9px 10px;
+              text-decoration: none;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              color: #555;
+              font-size: 14px;
+              &.none {
+                color: #999;
+              }
+
+              &:hover {
+                background-color: #ebebeb;
+              }
+            }
+            &.active {
+              a {
+                background-color: #ebebeb;
+                font-weight: bold;
+                color: #555;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &.right {
+    position: fixed;
+    left: 390px;
+    top: 50px;
+    right:0;
+    bottom: 75px;
+    padding: 20px;
+    overflow-x: hidden;
+  }
+  &.right-overlay {
+    background-color: #fff;
+    position: fixed;
+    left: 500px;
+    top: 50px;
+    right:0;
+    bottom: 75px;
+    padding: 20px;
+    overflow-x: hidden;
+  }
+  &.overlay {
+    background-color: #fff;
+    position: fixed;
+    left: 60px;
+    top: 50px;
+    right:0;
+    bottom: 0;
+    padding: 20px;
+    overflow-x: hidden;
+  }
+}
+.pagination {
+  margin: 0;
+}
+.btn.active {
+  box-shadow: none;
+}
+#dmpd-navbar {
+  .call-session {
+    background-color: #468966;
+    position: absolute;
+    left: 60px;
+    width: 330px;
+    top: 0;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    a, a:link, a:visited {
+      color: #fff;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    .closetab {
+      float: right;
+      background-color: darken(#468966, 4%);
+      width: 50px;
+    }
+  }
+}
+.navbar-inverse .topbar {
+  margin-left: 380px;
+  > li {
+    > a {
+      height: 50px;
+      line-height: 50px;
+      padding: 0 15px;
+      background-color: lighten(#549abd, 10%);
+      float: left;
+      transition: all 0.2s;
+      color: #fff;
+      cursor: pointer;
+      &:hover {
+        background-color: lighten(#549abd, 5%);
+      }
+    }
+    > a.contact {
+      min-width: 200px;
+    }
+    > a.closetab {
+      margin-right: 5px;
+    }
+    &.active {
+      > a.contact {
+        background-color: #fff;
+        color: #444;
+        &:hover {
+          color: #444;
+          background-color: #fff;
+        }
+      }
+      > a.closetab {
+        background-color: darken(#fff, 10%);
+        color: #777;
+        &:hover {
+          color: #999;
+          background-color: darken(#fff, 5%);
+        }
+      }
+    }
+  }
+}
+#main_navigation {
+  background-color: #e7e7e7;
+  display: block;
+  position: absolute;
+  overflow: none;
+  top: 50px;
+  bottom: 75px;
+  left: 0;
+  width: 60px;
+  margin-bottom: 0;
+  a, a:link, a:visited {
+    font-size: 25px;
+    padding: 15px;
+    text-align: center;
+    display: block;
+    color: lighten(black, 70%);
+    transition: color 0.2s;
+    &:hover {
+      color: lighten(black, 50%);
+    }
+  }
+  .bottom {
+    position: absolute;
+    bottom: 0;
+    width: inherit;
+  }
+  li.active {
+    a {
+      color: lighten(black, 30%) !important;
+      background-color: #f8f8f8;
+    }
+  }
+}
+.form-group {
+  .chosen-container {
+    .chosen-single.chosen-default, .chosen-single {
+      line-height: 35px;
+      height: 35px;
+      background: #fff;
+      border-radius: 0;
+      box-shadow: none;
+      border: 1px solid transparent;
+      border-bottom: 1px dashed #ccc;
+      > div {
+        top: 5px;
+      }
+    }
+    .chosen-drop {
+      border-radius: 0;
+      box-shadow: none;
+      border-color: #ccc;
+    }
+    &.chosen-with-drop {
+      .chosen-single.chosen-default, .chosen-single {
+        border: 1px solid #ccc;
+      }
+    }
+  }
+}
+.form-control {
+  box-shadow: none;
+  border-radius: 0;
+  border: 1px solid #ccc;
+  padding: 6px;
+  border: 0;
+  border-bottom: 1px dashed #ccc;
+  border-color: #ccc;
+  &:focus {
+    padding: 5px;
+    padding-bottom: 6px;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  &.ng-invalid.ng-dirty {
+    border-bottom-color: red;
+  }
+}
+.form-error {
+  color: red;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.form-title {
+  text-transform: uppercase;
+  color: #777;
+  border-bottom: 1px solid #ccc;
+  margin: 10px 0;
+  font-size: 15px;
+}
+.control-label {
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #777;
+}
+.form-actions {
+  padding: 20px;
+  background-color: darken(white, 5%);
+  text-align: right;
+  .success, .warning {
+    line-height: 30px;
+  }
+  .success {
+    color: green;
+  }
+  .warning {
+    color: #777;
+  }
+}
+.empty-state {
+  color: #444;
+  text-align: center;
+  font-size: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  min-height: 100px;
+  background-color: #fafafa;
+  .icon {
+    font-size: 50px;
+    margin-top: 20px;
+  }
+}
+.flow-title {
+  background-color: #1abc9c;
+  color: white;
+  font-size: 18px;
+  padding: 16px 25px;
+  line-height: 20px;
+  position: fixed;
+  top: 10px;
+  left: 340px;
+  right: 10px;
+  z-index: 20;
+}
+.flow-footer {
+  background-color: #fafafa;
+  border-top: 1px solid #ccc;
+  color: white;
+  font-size: 18px;
+  padding: 16px 25px;
+  line-height: 20px;
+  position: fixed;
+  bottom: 85px;
+  left: 340px;
+  right: 10px;
+  z-index: 20;
+  text-align: right;
+}
+.flow {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.flow-box {
+  padding: 0;
+  position: relative;
+  a {
+    cursor: pointer;
+  }
+  .flow-border {
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    top: 5px;
+    border: 1px solid #ccc;
+    pointer-events:none;
+  }
+  .flow-content {
+    padding: 20px;
+    font-size: 13px;
+    line-height: 18px;
+    p {
+      margin-bottom: 5px;
+    }
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .response {
+    margin: -15px;
+    margin-bottom: 15px;
+    background-color: #ccc;
+    padding: 10px;
+    text-align: center;
+    &.success {
+      color: #3c763d;
+      background-color: #dff0d8;
+    }
+    &.warning {
+      color: #31708f;
+      background-color: #d9edf7;
+    }
+    &.failure {
+      color: #a94442;
+      background-color: #f2dede;
+    }
+  }
+}
+.event {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  h4 {
+    padding: 10px;
+    margin: 0;
+  }
+  .history {
+    background-color: #f4f4f4;
+    border-top: 1px solid #ccc;
+    padding: 5px 10px;
+    .time {
+      @extend .label;
     }
   }
 }

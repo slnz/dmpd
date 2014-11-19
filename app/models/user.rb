@@ -1,4 +1,6 @@
-class User < ActiveRecord::Base
+class User < StaffPortal
+  default_scope { order(:first_name) }
   devise :cas_authenticatable, :trackable
-  establish_connection "staffportal_#{Rails.env}".to_sym
+  has_many :contacts
+  has_many :call_sessions
 end
