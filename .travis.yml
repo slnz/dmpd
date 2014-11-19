@@ -1,7 +1,7 @@
 language: ruby
 cache: bundler
 rvm:
-- 2.1.2
+- 2.1.4
 env:
   global:
   - AMAZON_S3_BUCKET=slnz_bundle_cache
