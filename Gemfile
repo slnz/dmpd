@@ -31,6 +31,7 @@ gem 'ransack'
 gem 'rabl-rails'
 gem 'wicked'
 gem 'bower-rails'
+gem 'rack-zippy'
 
 group :development do
   gem 'spring'

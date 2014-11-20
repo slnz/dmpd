@@ -3,6 +3,10 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in
   # config/application.rb.
 
+  # Puts ActionDispatch::Static in middleware stack which
+  # we are going to replace with Rack::Zippy::AssetServer
+  config.serve_static_assets = true
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
