@@ -13,7 +13,7 @@
       </div>
       <ul class="nav navbar-nav topbar">
         <li ui-sref-active="active" ng-repeat="contact in contacts">
-          <a class="contact" ui-sref="contacts.show({id: contact.id})">
+          <a class="contact" ui-sref="contacts.show({contactId: contact.id})">
             <i class="fa fa-user"></i>
             {{contact.first_name}} {{contact.last_name}}
           </a>
