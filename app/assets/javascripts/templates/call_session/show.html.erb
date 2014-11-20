@@ -1,0 +1,42 @@
+<div class="pane center" ng-show="validCallSession">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Current Calling Session ({{contacts.length}})</h1>
+      <input type="search" ng-model="search" class="form-control" placeholder="Search..." value="">
+    </div>
+  </div>
+  <div class="row call-session-contacts">
+    <div ng-repeat="contact in contacts | propsFilter: {name: search, category: search, status_title: search} | orderBy:['-pinned', 'name']"
+         class="col-md-3 contact">
+      <a ng-click="expand(contact.id)" class="{{contact.category}}" ng-hide="expanded == contact.id">
+        <div class="pull-right">{{contact.priority_code}}</div>
+        <div ng-bind-html="contact.name | highlight: search"></div>
+        <span ng-show="contact.last_called"><small class="text-muted">Last Called: {{contact.last_called}} <span class="time" am-time-ago="contact.last_called" am-preprocess="unix"></span></small></span>
+        <span ng-hide="contact.last_called"><small class="text-muted">Last Called: Never</small></span>
+        <br>
+        <div class="label label-{{contact.category}}" ng-bind-html="contact.status_title | highlight: search"></div>
+        <div class="pull-right">
+          <i class="fa" ng-class="{'fa-star-o': !contact.pinned, 'fa-star': contact.pinned}"></i>
+        </div>
+      </a>
+      <div class="{{contact.category}}" ng-show="expanded == contact.id">
+        <a ui-sref="call_session.call({contactId: contact.id})" class="btn btn-primary btn-block btn-sm"><i class="fa fa-phone"></i> Call <span ng-bind-html="contact.name | highlight: search"></span></a>
+        <a ng-click="expand(null)" class="pull-right btn btn-danger btn-xs"><i class="fa fa-times"></i> Close</a>
+        <div class="btn-group">
+          <a class="btn btn-default btn-xs"><i class="fa fa-clock-o"></i> Postpone</a>
+          <a class="btn btn-default btn-xs" ng-click="contact.pinned = !contact.pinned"><i class="fa" ng-class="{'fa-star-o': !contact.pinned, 'fa-star': contact.pinned}"></i> <span ng-show="contact.pinned">Unstar</span><span ng-hide="contact.pinned">Star</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pane left" ng-hide="validCallSession">
+  <div class="card">
+    <div class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-arrow-right fa-stack-1x fa-inverse"></i>
+    </div>
+    Create a new calling session on the right.
+  </div>
+</div>
+<div ui-view></div>

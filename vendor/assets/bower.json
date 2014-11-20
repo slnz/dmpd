@@ -1,0 +1,22 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "jquery": "latest",
+    "angular": "latest",
+    "angular-resource": "latest",
+    "angular-ui-router": "latest",
+    "bootstrap-sass-official": "latest",
+    "ng-table": "latest",
+    "underscore": "latest",
+    "font-awesome": "latest",
+    "angular-ui-select": "latest",
+    "angular-animate": "latest",
+    "angular-sanitize": "latest",
+    "angular-moment": "latest",
+    "angular-camera": "latest",
+    "angularLocalStorage": "latest",
+    "angular-bootstrap-datetimepicker": "latest",
+    "moment": "latest",
+    "angular-bootstrap": "latest"
+  }
+}

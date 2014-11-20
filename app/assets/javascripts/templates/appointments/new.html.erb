@@ -1,0 +1,34 @@
+<form novalidate ng-submit="createAppointment()" name="form">
+  <div class='row'>
+    <div class='col-sm-6 form-group'>
+      <label class='control-label'>Time *</label>
+      <span class="dropdown" dropdown on-toggle="toggled(open)">
+        <a href class="dropdown-toggle" dropdown-toggle>
+          <div class="input-group">
+            <input type="text" class="form-control" data-ng-model="appointment.time"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+          </div>
+        </a>
+        <ul class="dropdown-menu">
+          <datetimepicker data-ng-model="appointment.time" />
+        </ul>
+      </span>
+    </div>
+    <div class='col-sm-6 form-group'>
+      <label class='control-label'>Address *</label>
+      <input name="address" type="text" class="form-control" ng-model="appointment.address" />
+      <span class="form-error" ng-show="form.address.$invalid && form.address.$dirty">{{errorMessage('address')}}</span>
+    </div>
+    <div class='col-sm-12 form-group'>
+      <label class='control-label'>Notes</label>
+      <input name="notes" type="text" class="form-control" ng-model="appointment.notes" />
+      <span class="form-error" ng-show="form.notes.$invalid && form.notes.$dirty">{{errorMessage('notes')}}</span>
+    </div>
+  </div>
+  <div class="form-actions clearfix">
+    <div class="success pull-left" ng-show="form.$pristine && appointment.id"><i class="fa fa-check-circle"></i> Saved</div>
+    <div class="warning pull-left" ng-hide="form.$pristine"><i class="fa fa-times-circle"></i> Pending</div>
+    <a ng-show="appointment.id" ng-click="reset_to_new()" class="btn btn-default">Add Another</a>
+    <a ng-disabled="form.$pristine" ng-click="reset()" class="btn btn-default">Reset</a>
+    <input ng-disabled="form.$pristine" type="submit" class="btn btn-primary" value="Save" />
+  </div>
+</form>

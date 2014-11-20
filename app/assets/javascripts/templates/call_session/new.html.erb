@@ -1,0 +1,28 @@
+<div class="pane right">
+  <h2>Hey {{data.first_name}},</h2>
+  <h1>You have {{data.count}} to make.</h1>
+  <h4>Making calls with someone makes it so much easier.</h4>
+
+  <form novalidate ng-submit="newCallSession(callSession.partner.id)">
+
+    <div class='row'>
+      <div class='col-md-8 form-group'>
+        <label class='control-label'>Who are you calling with?</label>
+        <ui-select ng-model="callSession.partner">
+          <ui-select-match placeholder="Select or Search for a Partner">{{$select.selected.name}}</ui-select-match>
+          <ui-select-choices repeat="partner in data.partners | propsFilter: {name: $select.search}">
+            <div ng-bind-html="partner.name | highlight: $select.search"></div>
+          </ui-select-choices>
+        </ui-select>
+
+      </div>
+    </div>
+    <div class='row'>
+      <div class="col-md-8">
+        <div class="form-actions clearfix">
+          <input type="submit" class="btn btn-primary" value="Start Session">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

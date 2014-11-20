@@ -1,0 +1,38 @@
+<div class="flow-title">
+  The Replay
+</div>
+<div class="flow">
+  <div class="event" ng-repeat="event in call.events">
+    <h4>{{event.message}}</h4>
+    <div class="history clearfix">
+      <div class="row">
+        <div class="col-md-10">
+          <span ng-show="event.transition">
+            <span class="label label-warning">
+              <strong>Transition</strong> {{event.transition}}
+            </span>
+            &nbsp;
+            <i class="fa fa-angle-right"></i>
+          </span>
+          <span ng-show="event.state">
+            <span class="label label">
+              <strong>Action</strong> {{event.state}}
+            </span>
+            &nbsp;
+            <i class="fa fa-angle-right"></i>
+          </span>
+          <span class="label">
+            <strong>Step</strong> {{event.step}}
+          </span>
+        </div>
+        <div class="col-md-2 text-right">
+          <span class="time" am-time-ago="event.start_time" am-preprocess="unix"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="flow-footer">
+<a ng-click="update_call('stats')"
+   class="btn btn-primary">Next</a>
+</div>
