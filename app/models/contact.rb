@@ -1,4 +1,4 @@
-class Contact < StaffPortal
+class Contact < ActiveRecord::Base
   paginates_per 500
   has_one :referer, class_name: 'Contact', foreign_key: 'referer_id'
   has_many :calls, dependent: :destroy

@@ -1,6 +1,6 @@
 class CreateContacts < ActiveRecord::Migration
   def change
-    return unless Rails.env.test?
+    return unless Rails.env.test? || Rails.env == 'staging'
     create_table "contacts", force: true do |t|
       t.string   "first_name"
       t.string   "last_name"

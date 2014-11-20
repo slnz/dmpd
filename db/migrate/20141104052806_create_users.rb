@@ -1,6 +1,6 @@
 class CreateUsers < ActiveRecord::Migration
   def change
-    return unless Rails.env.test?
+    return unless Rails.env.test? || Rails.env == 'staging'
     create_table "users", force: true do |t|
       t.string   "username"
       t.string   "admin"

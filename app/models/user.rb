@@ -1,4 +1,4 @@
-class User < StaffPortal
+class User < ActiveRecord::Base
   default_scope { order(:first_name) }
   devise :cas_authenticatable, :trackable
   has_many :contacts
