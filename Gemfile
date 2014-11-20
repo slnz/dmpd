@@ -25,7 +25,6 @@ gem 'autoprefixer-rails'
 gem 'draper'
 gem 'devise'
 gem 'devise_cas_authenticatable'
-gem 'bower-rails'
 gem 'angular-rails-templates'
 gem 'versionist'
 gem 'ransack'
@@ -59,6 +58,7 @@ group :development, :test do
   gem 'assert_difference'
   gem 'fuubar'
   gem 'rubocop'
+  gem 'bower-rails'
 end
 
 group :test do
