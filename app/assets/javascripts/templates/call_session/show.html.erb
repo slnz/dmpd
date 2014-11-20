@@ -11,7 +11,7 @@
       <a ng-click="expand(contact.id)" class="{{contact.category}}" ng-hide="expanded == contact.id">
         <div class="pull-right">{{contact.priority_code}}</div>
         <div ng-bind-html="contact.name | highlight: search"></div>
-        <span ng-show="contact.last_called"><small class="text-muted">Last Called: <span class="time" am-time-ago="contact.last_called" am-preprocess="unix"></span></small></span>
+        <span ng-show="contact.last_called"><small class="text-muted">Last Called: {{contact.last_called}} <span class="time" am-time-ago="contact.last_called" am-preprocess="unix"></span></small></span>
         <span ng-hide="contact.last_called"><small class="text-muted">Last Called: Never</small></span>
         <br>
         <div class="label label-{{contact.category}}" ng-bind-html="contact.status_title | highlight: search"></div>
