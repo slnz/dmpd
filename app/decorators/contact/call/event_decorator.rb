@@ -1,3 +1,4 @@
+require "#{Rails.root}/app/models/contact/call"
 class Contact
   class Call
     class EventDecorator < ApplicationDecorator
