@@ -30,6 +30,7 @@ gem 'versionist'
 gem 'ransack'
 gem 'rabl-rails'
 gem 'wicked'
+gem 'bower-rails'
 
 group :development do
   gem 'spring'
@@ -58,7 +59,6 @@ group :development, :test do
   gem 'assert_difference'
   gem 'fuubar'
   gem 'rubocop'
-  gem 'bower-rails'
 end
 
 group :test do
