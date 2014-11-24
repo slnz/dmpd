@@ -1,3 +1,12 @@
+<div class="clearfix">
+    <div class="pull-right">
+      <a ui-sref="contacts.show.appointments.index({contactId: contact.id})"
+         class="btn btn-default">
+         <i class="fa fa-calendar-o"></i>
+         Appointments
+       </a>
+    </div>
+  </div>
 <form novalidate ng-submit="updateContact()" name="form">
   <div class='form-title'>
     {{contact.first_name}}
@@ -108,4 +117,4 @@
   </div>
 </form>
 
-<div ui-view ng-show="$state.current.name == 'contacts.show.appointments' || $state.current.name == 'contacts.show.callbacks'" class="pane right-overlay"></div>
+<div ui-view ng-show="$state.includes('contacts.show.appointments')" class="pane right-overlay"></div>

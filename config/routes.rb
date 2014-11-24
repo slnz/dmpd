@@ -34,6 +34,7 @@ Rails.application.routes.draw do
           get 'data'
         end
       end
+      resources :appointments
     end
   end
 

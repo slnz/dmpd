@@ -9,10 +9,10 @@ class Contact
                    :answered, :line_busy, :no_answer]
     end
     unless instance_methods.include? :step
-    enum step: [:init, :start_call, :new_contact,
-                :must_callback_for_contacts, :must_callback_for_decision,
-                :ask_for_contacts, :appointment, :callback, :support,
-                :not_present, :input_contacts, :stats, :end]
+      enum step: [:init, :start_call, :new_contact,
+                  :must_callback_for_contacts, :must_callback_for_decision,
+                  :ask_for_contacts, :appointment, :callback, :support,
+                  :not_present, :input_contacts, :stats, :end]
     end
   end
 end
