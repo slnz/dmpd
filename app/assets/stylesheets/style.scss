@@ -389,6 +389,10 @@ body > footer {
     }
     > a.contact {
       min-width: 200px;
+      &.new {
+        min-width: 0;
+        margin-right: 10px;
+      }
     }
     > a.closetab {
       margin-right: 5px;
@@ -632,7 +636,6 @@ body > footer {
   margin-top: 10px;
   .date {
     float:left;
-    background-color: #fff;
     width: 50px;
     padding-top: 10px;
     .day-num {
