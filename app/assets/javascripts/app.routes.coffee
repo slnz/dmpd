@@ -43,15 +43,34 @@ app.config([ '$stateProvider', '$urlRouterProvider', '$locationProvider'
       )
       .state('contacts.show.appointments',
         url: '/appointments'
+        templateUrl: 'contacts/appointments/base.html'
+      )
+      .state('contacts.show.appointments.index',
+        url: '/'
+        templateUrl: 'contacts/appointments/index.html'
+        controller: 'ContactAppointmentsIndexController'
+      )
+      .state('contacts.show.appointments.new',
+        url: '/new'
+        templateUrl: 'contacts/appointments/new.html'
+        controller: 'ContactAppointmentsNewController'
+      )
+      .state('contacts.show.appointments.show',
+        url: '/:appointmentId'
+        templateUrl: 'contacts/appointments/show.html'
+        controller: 'ContactAppointmentsShowController'
+      )
+      .state('appointments',
+        url: '/appointments'
         templateUrl: 'appointments/index.html'
         controller: 'AppointmentsIndexController'
       )
-      .state('contacts.show.appointments.new',
+      .state('appointments.new',
         url: '/new'
         templateUrl: 'appointments/new.html'
         controller: 'AppointmentsNewController'
       )
-      .state('contacts.show.appointments.show',
+      .state('appointments.show',
         url: '/:appointmentId'
         templateUrl: 'appointments/show.html'
         controller: 'AppointmentsShowController'
@@ -116,8 +135,8 @@ app.config([ '$stateProvider', '$urlRouterProvider', '$locationProvider'
       )
       .state('call_session.call.appointment.new',
         url: '/new'
-        templateUrl: 'appointments/new.html'
-        controller: 'AppointmentsNewController'
+        templateUrl: 'contacts/appointments/new.html'
+        controller: 'ContactAppointmentsNewController'
       )
       .state('call_session.call.callback',
         url: '/callback'

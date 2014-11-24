@@ -1,8 +1,13 @@
-app.controller('AppointmentsNewController',
-  [ '$rootScope', '$scope', '$resource', '$stateParams', 'Appointment',
+app.controller('ContactAppointmentsShowController',
+  [ '$rootScope', '$scope', '$resource', '$stateParams', 'ContactAppointment',
   ($rootScope, $scope, $resource, $stateParams, Appointment)->
-    $scope.appointment = new Appointment
+    $scope.contact = $scope.$parent.contact
 
+    $scope.appointment = Appointment.get(
+      contactId: $stateParams['contactId'],
+      id: $stateParams['appointmentId'], ->
+       $scope.initial = angular.copy($scope.appointment)
+    )
     failure = (response) ->
       _.each response.data, (errors, key) ->
         _.each errors, (e) ->
@@ -14,19 +19,12 @@ app.controller('AppointmentsNewController',
       angular.copy($scope.appointment, $scope.initial)
       $scope.form.$setPristine()
 
-    $scope.createAppointment = ->
-      if $scope.appointment.id?
-        $scope.appointment.$update(
-          contactId: $stateParams['contactId']
-          ,
-          success,
-          failure)
-      else
-        $scope.appointment.$create(
-          contactId: $stateParams['contactId']
-          ,
-          success,
-          failure)
+    $scope.saveAppointment = ->
+      $scope.appointment.$update(
+        contactId: $stateParams['contactId']
+        ,
+        success,
+        failure)
 
     $scope.errorClass = (name) ->
       s = $scope.form[name]
@@ -44,12 +42,7 @@ app.controller('AppointmentsNewController',
       angular.copy($scope.initial, $scope.appointment)
       $scope.form.$setPristine()
 
-    $scope.reset_to_new = ->
-      $scope.appointment = new Appointment
-      angular.copy($scope.appointment, $scope.initial)
-      $scope.form.$setPristine()
-
-    Appointment.query((response) ->
-      $scope.referers = response
-    )
+    $scope.future = (time) ->
+      return false unless time?
+      new Date < new Date(time)
 ])

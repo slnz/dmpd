@@ -323,12 +323,13 @@ body > footer {
   &.right-overlay {
     background-color: #fff;
     position: fixed;
-    left: 500px;
+    width: 400px;
     top: 50px;
     right:0;
     bottom: 75px;
     padding: 20px;
     overflow-x: hidden;
+    border-left: 10px solid #ccc;
   }
   &.overlay {
     background-color: #fff;
@@ -624,6 +625,41 @@ body > footer {
     padding: 5px 10px;
     .time {
       @extend .label;
+    }
+  }
+}
+.set_appointment {
+  margin-top: 10px;
+  .date {
+    float:left;
+    background-color: #fff;
+    width: 50px;
+    padding-top: 10px;
+    .day-num {
+      font-size: 35px;
+    }
+    .month {
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+    .day {
+      border-top: 1px solid #ccc;
+      margin-right: 10px;
+      color: #ccc;
+      padding-top: 5px;
+      margin-top: 5px;
+    }
+  }
+  .content {
+    margin-left: 50px;
+    background-color: #777;
+    color: #fff;
+    padding: 20px;
+    &.active {
+      background-color: #1abc9c;
+    }
+    h3 {
+      margin-top: 0;
     }
   }
 }
