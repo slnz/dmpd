@@ -4,8 +4,7 @@ app.controller('ContactsShowController',
     $scope.contact = Contact.get(id: $stateParams['contactId'], ->
        $scope.initial = angular.copy($scope.contact)
     )
-    $rootScope.add_topbar_contact $stateParams.id, $scope.contact
-
+    $rootScope.add_topbar_contact $stateParams['contactId'], $scope.contact
     failure = (response) ->
       _.each response.data, (errors, key) ->
         _.each errors, (e) ->
