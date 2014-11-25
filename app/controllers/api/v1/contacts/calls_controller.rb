@@ -179,9 +179,11 @@ module Api
             jump_to :callback
           when :got_support
             @message = 'Interested in supporting'
+            @transition = :appointment_new_ministry_partner
             jump_to :support
           when :no_support
             @message = 'Not Interested in supporting'
+            @transition = :appointment_no_support
             jump_to :stats
           else
             @possible_states =
