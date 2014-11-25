@@ -11,6 +11,7 @@ class Contact
 
     after_save :move_contact
 
+    # rubocop:disable Metrics/MethodLength
     def move_contact
       case result.try(:to_sym)
       when :waiting
@@ -24,5 +25,6 @@ class Contact
       end
       contact.save
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end

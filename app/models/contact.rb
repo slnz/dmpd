@@ -56,8 +56,7 @@ class Contact < ActiveRecord::Base
   end
 
   def self.frequencies
-    {
-      'Special' => (0.0).to_d,
+    { 'Special' => (0.0).to_d,
       'Weekly' => (0.23076923076923).to_d,
       'Fortnightly' => (0.46153846153846).to_d,
       'Monthly' => (1.0).to_d,
@@ -65,8 +64,7 @@ class Contact < ActiveRecord::Base
       'Quarterly' => (3.0).to_d,
       'Semi-Annual' => (6.0).to_d,
       'Annual' => (12.0).to_d,
-      'Biennial' => (24.0).to_d
-    }
+      'Biennial' => (24.0).to_d }
   end
 
   protected
