@@ -3,11 +3,11 @@
     <a ui-sref="contacts.show.appointments.new({contactId: contact.id})">
       <i class="fa fa-plus"></i>
     </a>
-    &nbsp;
-    <a ui-sref="contacts.show({contactId: contact.id})">
-      <i class="fa fa-arrow-left"></i>
-    </a>
   </div>
+  <a ui-sref="contacts.show({contactId: contact.id})">
+    <i class="fa fa-arrow-left"></i>
+  </a>
+  &nbsp;
   <i class="fa fa-calendar-o"></i>
   &nbsp;
   Appointments with {{contact.first_name}}

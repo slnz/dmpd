@@ -51,6 +51,24 @@ class Contact < ActiveRecord::Base
     send "#{status.to_s.split('_')[0]}!"
   end
 
+  def frequency=(frequency)
+    super frequency.to_d
+  end
+
+  def self.frequencies
+    {
+      'Special' => (0.0).to_d,
+      'Weekly' => (0.23076923076923).to_d,
+      'Fortnightly' => (0.46153846153846).to_d,
+      'Monthly' => (1.0).to_d,
+      'Bi-Monthly' => (2.0).to_d,
+      'Quarterly' => (3.0).to_d,
+      'Semi-Annual' => (6.0).to_d,
+      'Annual' => (12.0).to_d,
+      'Biennial' => (24.0).to_d
+    }
+  end
+
   protected
 
   def update_search_field

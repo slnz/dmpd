@@ -319,6 +319,9 @@ body > footer {
     bottom: 75px;
     padding: 20px;
     overflow-x: hidden;
+    &.narrow {
+      right:400px;
+    }
   }
   &.right-overlay {
     background-color: #fff;

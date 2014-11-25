@@ -1,8 +1,8 @@
 <h4>
-  <a class="text-muted pull-right"
-     ui-sref="contacts.show.appointments.index({contactId: contact.id})">
+  <a ui-sref="contacts.show.appointments.index({contactId: contact.id})">
     <i class="fa fa-arrow-left"></i>
   </a>
+  &nbsp;
   <i class="fa fa-calendar-o"></i>
   &nbsp;
   Appointment with {{contact.first_name}}
@@ -35,15 +35,28 @@
         </ul>
       </span>
     </div>
-    <div class='col-md-12 form-group'>
-      <label class='control-label'>Address *</label>
-      <input name="address" type="text" class="form-control" ng-model="appointment.address" />
-      <span class="form-error" ng-show="form.address.$invalid && form.address.$dirty">{{errorMessage('address')}}</span>
+    <div ng-show="future(appointment.time)">
+      <div class='col-md-12 form-group'>
+        <label class='control-label'>Address *</label>
+        <input name="address" type="text" class="form-control" ng-model="appointment.address" />
+        <span class="form-error" ng-show="form.address.$invalid && form.address.$dirty">{{errorMessage('address')}}</span>
+      </div>
+      <div class='col-sm-12 form-group'>
+        <label class='control-label'>Notes</label>
+        <input name="notes" type="text" class="form-control" ng-model="appointment.notes" />
+      </div>
     </div>
-    <div class='col-sm-12 form-group'>
-      <label class='control-label'>Notes</label>
-      <input name="notes" type="text" class="form-control" ng-model="appointment.notes" />
-      <span class="form-error" ng-show="form.notes.$invalid && form.notes.$dirty">{{errorMessage('notes')}}</span>
+    <div ng-hide="future(appointment.time)">
+      <div class='col-sm-12 form-group'>
+
+        <label class='control-label'>Appointment Result</label>
+
+        <select name="result" type="text" class="form-control" ng-model="contact.result">
+          <% Contact::Appointment.results.each do |key, value| %>
+            <option value="<%= key %>"><%= key.titleize %></option>
+          <% end %>
+        </select>
+      </div>
     </div>
   </div>
   <div class="form-actions clearfix">
