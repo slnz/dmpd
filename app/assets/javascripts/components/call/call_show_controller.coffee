@@ -15,4 +15,8 @@ app.controller('CallShowController',
         state: state, (response) ->
           $state.go('call_session.call.' + response.step)
       )
+    $scope.remove_active_contact = ->
+      $scope.$parent.contacts =
+        _.without($scope.$parent.contacts,
+          _.findWhere($scope.$parent.contacts, $scope.$parent.expanded))
 ])

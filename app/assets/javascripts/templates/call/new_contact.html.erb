@@ -1,124 +1,158 @@
-<div class="flow-title">
-  New Contact
+<div ng-show="contact.status == 'callback_for_appointment'">
+  <div class="flow-title">
+    Callback for Appointment
+  </div>
 </div>
-<div class="flow clearfix text-center">
-  <div class="row-fluid">
-    <div class="col-md-12 flow-box">
-      <div class="flow-border"></div>
-      <div class="flow-content">
-        <p>
-          Hey is this {{contact.first_name}}?
-          <a ng-click="update_call('new_contact', 'not_in')">
-            (Not In)
-          </a>
-        </p>
-        <p>
-          Hi {{contact.first_name}}. My name is {{current_user.first_name}}. <span ng-show="contact.referer_name">A friend of ours, {{contact.referer_name}}, suggested I give you a call.</span>
-        </p>
-        <p>
-          Is this a good time to talk briefly?
-          <a ng-click="update_call('new_contact', 'must_callback')">
-            (Call Later)
-          </a>
-        </p>
-        <p>
-          {{contact.first_name}}, I’m a missionary with Student Life. Have you heard of Student Life before?
-        </p>
-      </div>
-    </div>
+<div ng-hide="contact.status == 'callback_for_appointment'">
+  <div class="flow-title">
+    New Contact
   </div>
-  <div class="row-fluid">
-    <div class="col-md-6 text-center text-muted">
-      <i class="fa fa-arrow-down"></i>
-    </div>
-    <div class="col-md-6 text-center text-muted">
-      <i class="fa fa-arrow-down"></i>
-    </div>
-  </div>
-  <div class="row-fluid row-sm-height">
-    <div class="col-md-6 col-sm-height flow-box">
-      <div class="flow-border"></div>
-      <div class="flow-content">
-        <div class="response success">Yes</div>
-        That’s great how did you hear about it?
-      </div>
-    </div>
-    <div class="col-md-6 col-sm-height flow-box">
-      <div class="flow-border"></div>
-      <div class="flow-content">
-        <div class="response warning">No</div>
-        Student Life is an evangelistic organisation with an emphasis on reaching University students for Christ and helping them to grow spiritually.
-      </div>
-    </div>
-  </div>
-  <div class="row-fluid">
-    <div class="col-md-12 flow-box">
-      <div class="flow-border"></div>
-      <div class="flow-content">
-        <p>I’m contacting a few people right now to share with them some of the exciting things that God is doing through our ministry and I want to explain the part they can play in it.</p>
-        <p>I was hoping we could meet for about 30 minutes so I can tell you more about Student Life.</p>
-        <p>I would also like you to consider INVESTING in this ministry through prayer and finance.</p>
-        <p>So would you be keen to meet sometime in the next few days to talk about it?</p>
-      </div>
-    </div>
-  </div>
-  <div class="row-fluid">
-    <div class="col-md-3 text-center text-muted">
-      <i class="fa fa-arrow-down"></i>
-    </div>
-    <div class="col-md-3 text-center text-muted">
-      <i class="fa fa-arrow-down"></i>
-    </div>
-    <div class="col-md-3 text-center text-muted">
-      <i class="fa fa-arrow-down"></i>
-    </div>
-    <div class="col-md-3 text-center text-muted">
-      <i class="fa fa-arrow-down"></i>
-    </div>
-  </div>
-  <div class="row-fluid row-sm-height">
-    <div class="col-md-3 col-sm-height flow-box">
-      <div class="flow-border"></div>
-      <div class="flow-content">
-        <div class="response success">
-          <strong>Yes</strong><br>Able to meet
+</div>
+  <div class="flow clearfix text-center">
+    <div class="row-fluid">
+      <div class="col-md-12 flow-box">
+        <div class="flow-border"></div>
+        <div ng-show="contact.status == 'callback_for_appointment'">
+          <div class="flow-content">
+            <p>
+              Hey is this {{contact.first_name}}?
+              <a ng-click="update_call('new_contact', 'not_in')">
+                (Not In)
+              </a>
+            </p>
+            <p>
+              Hi {{contact.first_name}}. This is {{current_user.first_name}} with Student Life.
+            </p>
+            <p>
+              Is this a good time to talk briefly?
+              <a ng-click="update_call('new_contact', 'must_callback')">
+                (Call Later)
+              </a>
+            </p>
+            <p>
+              We talked on the phone the other day and you asked me to call you to see when we can set up a time to meet. Are we able to set a time for that?
+            </p>
+          </div>
         </div>
-        <p>Would <strong>[time]</strong> on <strong>[day]</strong> suit you?</p>
-        <p class="text-muted"><small>Negotiate a Time that works for both you and your potential ministry partner</small></p>
-        <a ng-click="update_call('new_contact', 'got_appointment')"
-           class="btn btn-primary btn-block">Organize Appointment</a>
+        <div ng-hide="contact.status == 'callback_for_appointment'">
+          <div class="flow-content">
+            <p>
+              Hey is this {{contact.first_name}}?
+              <a ng-click="update_call('new_contact', 'not_in')">
+                (Not In)
+              </a>
+            </p>
+            <p>
+              Hi {{contact.first_name}}. My name is {{current_user.first_name}}. <span ng-show="contact.referer_name">A friend of ours, {{contact.referer_name}}, suggested I give you a call.</span>
+            </p>
+            <p>
+              Is this a good time to talk briefly?
+              <a ng-click="update_call('new_contact', 'must_callback')">
+                (Call Later)
+              </a>
+            </p>
+            <p>
+              {{contact.first_name}}, I’m a missionary with Student Life. Have you heard of Student Life before?
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-md-3 col-sm-height flow-box">
-      <div class="flow-border"></div>
-      <div class="flow-content">
-        <div class="response success">
-          <strong>Yes</strong><br>Don't know Schedule
+    <div ng-hide="contact.status == 'callback_for_appointment'">
+      <div class="row-fluid">
+        <div class="col-md-6 text-center text-muted">
+          <i class="fa fa-arrow-down"></i>
         </div>
-        <p>Great, would I be able to give you a call back in <strong>[appropriate time]</strong> to organise a time then?</p>
-        <a ng-click="update_call('new_contact', 'must_callback')"
-           class="btn btn-default btn-block">Must Callback</a>
+        <div class="col-md-6 text-center text-muted">
+          <i class="fa fa-arrow-down"></i>
+        </div>
+      </div>
+      <div class="row-fluid row-sm-height">
+        <div class="col-md-6 col-sm-height flow-box">
+          <div class="flow-border"></div>
+          <div class="flow-content">
+            <div class="response success">Yes</div>
+            That’s great how did you hear about it?
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-height flow-box">
+          <div class="flow-border"></div>
+          <div class="flow-content">
+            <div class="response warning">No</div>
+            Student Life is an evangelistic organisation with an emphasis on reaching University students for Christ and helping them to grow spiritually.
+          </div>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="col-md-12 flow-box">
+          <div class="flow-border"></div>
+          <div class="flow-content">
+            <p>I’m contacting a few people right now to share with them some of the exciting things that God is doing through our ministry and I want to explain the part they can play in it.</p>
+            <p>I was hoping we could meet for about 30 minutes so I can tell you more about Student Life.</p>
+            <p>I would also like you to consider INVESTING in this ministry through prayer and finance.</p>
+            <p>So would you be keen to meet sometime in the next few days to talk about it?</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-md-3 col-sm-height flow-box">
-      <div class="flow-border"></div>
-      <div class="flow-content clearfix">
-        <div class="response warning">
-          <strong>No</strong><br>Not financially able
-        </div>
-        <p>That's Okay, I would still love to meet so that I can share with you the vision of our ministry as there are other ways that you can play a part. Are we able to set a time for that?</p>
-        <i class="fa fa-arrow-right pull-right text-muted"></i>
-        <i class="fa fa-arrow-left pull-left text-muted"></i>
+    <div class="row-fluid">
+      <div class="col-md-3 text-center text-muted">
+        <i class="fa fa-arrow-down"></i>
+      </div>
+      <div class="col-md-3 text-center text-muted">
+        <i class="fa fa-arrow-down"></i>
+      </div>
+      <div class="col-md-3 text-center text-muted">
+        <i class="fa fa-arrow-down"></i>
+      </div>
+      <div class="col-md-3 text-center text-muted">
+        <i class="fa fa-arrow-down"></i>
       </div>
     </div>
-    <div class="col-md-3 col-sm-height flow-box">
-      <div class="flow-border"></div>
-      <div class="flow-content">
-        <div class="response failure">
-          <strong>No</strong><br>Not interested right now
+    <div class="row-fluid row-sm-height">
+      <div class="col-md-3 col-sm-height flow-box">
+        <div class="flow-border"></div>
+        <div class="flow-content">
+          <div class="response success">
+            <strong>Yes</strong><br>Able to meet
+          </div>
+          <p>Would <strong>[time]</strong> on <strong>[day]</strong> suit you?</p>
+          <p class="text-muted"><small>Negotiate a Time that works for both you and your potential ministry partner</small></p>
+          <a ng-click="update_call('new_contact', 'got_appointment')"
+             class="btn btn-primary btn-block">Organize Appointment</a>
         </div>
-        <a ng-click="update_call('new_contact', 'no_appointment')"
-           class="btn btn-danger btn-block">No Appointment</a>
+      </div>
+      <div class="col-md-3 col-sm-height flow-box">
+        <div class="flow-border"></div>
+        <div class="flow-content">
+          <div class="response success">
+            <strong>Yes</strong><br>Don't know Schedule
+          </div>
+          <p>Great, would I be able to give you a call back in <strong>[appropriate time]</strong> to organise a time then?</p>
+          <a ng-click="update_call('new_contact', 'must_callback')"
+             class="btn btn-default btn-block">Must Callback</a>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-height flow-box">
+        <div class="flow-border"></div>
+        <div class="flow-content clearfix">
+          <div class="response warning">
+            <strong>No</strong><br>Not financially able
+          </div>
+          <p>That's Okay, I would still love to meet so that I can share with you the vision of our ministry as there are other ways that you can play a part. Are we able to set a time for that?</p>
+          <i class="fa fa-arrow-right pull-right text-muted"></i>
+          <i class="fa fa-arrow-left pull-left text-muted"></i>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-height flow-box">
+        <div class="flow-border"></div>
+        <div class="flow-content">
+          <div class="response failure">
+            <strong>No</strong><br>Not interested right now
+          </div>
+          <a ng-click="update_call('new_contact', 'no_appointment')"
+             class="btn btn-danger btn-block">No Appointment</a>
+        </div>
       </div>
     </div>
   </div>

@@ -15,6 +15,10 @@ app.config([ '$stateProvider', '$urlRouterProvider', '$locationProvider'
         '/call_session/call/:id/callback',
         '/call_session/call/:id/callback/new',
       )
+      .when(
+        '/call_session/call/:id/support',
+        '/call_session/call/:id/support/details',
+      )
     $stateProvider
       .state('home',
         url: '/',
@@ -150,6 +154,11 @@ app.config([ '$stateProvider', '$urlRouterProvider', '$locationProvider'
       .state('call_session.call.support',
         url: '/support'
         templateUrl: 'call/support.html'
+      )
+      .state('call_session.call.support.details',
+        url: '/details'
+        templateUrl: 'contacts/show.html'
+        controller: 'ContactsShowController'
       )
       .state('call_session.call.not_present',
         url: '/not_present'
