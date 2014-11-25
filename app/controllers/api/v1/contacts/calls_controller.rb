@@ -251,3 +251,4 @@ module Api
     end
   end
 end
+# rubocop:enable Metrics/MethodLength, Metrics/ClassLength

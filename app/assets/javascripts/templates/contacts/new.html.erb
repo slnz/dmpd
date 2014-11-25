@@ -64,10 +64,12 @@
   <div class='row'>
     <div class='col-sm-6 form-group'>
       <label class='control-label'>Referer</label>
-      <select chosen name="referer_id" type="text" class="form-control" ng-model="contact.referers" data-placeholder="Choose a Referer" no-results-text="'Could not find any Referers'" ng-options="referer.id as referer.name for referer in referers">
-      </select>
-
-      <span class="form-error" ng-show="form.referer.$invalid && form.referer.$dirty">{{errorMessage('referer_id')}}</span>
+      <ui-select ng-model="contact.referer_id">
+        <ui-select-match placeholder="Select or Search for a Referer">{{$select.selected.name}}</ui-select-match>
+        <ui-select-choices repeat="referer.id as referer in referers | propsFilter: {name: $select.search}">
+          <div ng-bind-html="referer.name | highlight: $select.search"></div>
+        </ui-select-choices>
+      </ui-select>
     </div>
     <div class='col-sm-6 form-group'>
       <label class='control-label'>How Knows</label>
@@ -96,6 +98,12 @@
     <div class='col-sm-6 form-group'>
       <label class='control-label'>Anniversary</label>
       <input name="anniversary" type="text" class="form-control" ng-model="contact.anniversary" /><span class="form-error" ng-show="form.anniversary.$invalid && form.anniversary.$dirty">{{errorMessage('anniversary')}}</span>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12 form-group'>
+      <label class='control-label'>Notes</label>
+      <input name="notes" type="text" class="form-control" ng-model="contact.notes" /><span class="form-error" ng-show="form.notes.$invalid && form.notes.$dirty">{{errorMessage('notes')}}</span>
     </div>
   </div>
   <div class="form-actions clearfix">

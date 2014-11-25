@@ -112,7 +112,8 @@ module Api
               :first_name, :last_name, :priority_code, :new_church,
               :email, :address, :primary_phone, :home_phone, :office_phone,
               :how_knows, :occupation, :church, :children, :anniversary,
-              :status)
+              :status, :notes, :referer_id, :amount, :frequency, :gift_date,
+              :thanks)
         end
       end
     end

@@ -14,7 +14,7 @@
     </li>
   </ul>
 </div>
-<div ui-view class="pane right">
+<div ui-view class="pane right" ng-class="{ narrow : $state.includes('contacts.show.appointments') }">
   <div class="row-fluid">
     <div class="col-sm-12 col-md-6">
       <div class="card">

@@ -13,9 +13,7 @@
       <label class='control-label'>Time *</label>
       <span class="dropdown" dropdown on-toggle="toggled(open)">
         <a href class="dropdown-toggle" dropdown-toggle>
-          <div class="input-group">
-            <input type="text" class="form-control" data-ng-model="appointment.time"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-          </div>
+          <input type="text" class="form-control" data-ng-model="appointment.time">
         </a>
         <ul class="dropdown-menu">
           <datetimepicker data-ng-model="appointment.time" />

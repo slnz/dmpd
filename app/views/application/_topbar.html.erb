@@ -12,6 +12,11 @@
         </a>
       </div>
       <ul class="nav navbar-nav topbar">
+        <li ui-sref-active="active">
+          <a class="contact new" ui-sref="contacts.new">
+            <i class="fa fa-plus"></i>
+          </a>
+        </li>
         <li ui-sref-active="active" ng-repeat="contact in contacts">
           <a class="contact" ui-sref="contacts.show({contactId: contact.id})">
             <i class="fa fa-user"></i>

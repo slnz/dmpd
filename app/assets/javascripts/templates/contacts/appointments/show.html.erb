@@ -1,8 +1,8 @@
 <h4>
-  <a class="text-muted pull-right"
-     ui-sref="contacts.show.appointments.index({contactId: contact.id})">
+  <a ui-sref="contacts.show.appointments.index({contactId: contact.id})">
     <i class="fa fa-arrow-left"></i>
   </a>
+  &nbsp;
   <i class="fa fa-calendar-o"></i>
   &nbsp;
   Appointment with {{contact.first_name}}
@@ -13,10 +13,24 @@
     <div class="month">{{appointment.time | dateFilter : 'MMM'}}</div>
     <div class="day">{{appointment.time | dateFilter : 'EEE'}}</div>
   </div>
-  <div class="content" ng-class="{active: future(appointment.time)}">
+  <div class="content" ng-class="{waiting: !future(appointment.time) && appointment.result == 'waiting', active: future(appointment.time)}">
     <h3>{{appointment.time | dateFilter : 'h:mm a'}}</h3>
     <h4>{{appointment.address}}</h4>
     <p>{{appointment.notes}}</p>
+    <div class="result pull-right">
+      <span class="fa-stack fa-lg" ng-show="!future(appointment.time) && appointment.result=='waiting'">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-clock-o fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="fa-stack fa-lg" ng-show="appointment.result=='support'">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-dollar fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="fa-stack fa-lg" ng-show="appointment.result=='callback_for_decision'">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-phone fa-stack-1x fa-inverse"></i>
+      </span>
+    </div>
   </div>
 </div>
 <br>
@@ -35,15 +49,28 @@
         </ul>
       </span>
     </div>
-    <div class='col-md-12 form-group'>
-      <label class='control-label'>Address *</label>
-      <input name="address" type="text" class="form-control" ng-model="appointment.address" />
-      <span class="form-error" ng-show="form.address.$invalid && form.address.$dirty">{{errorMessage('address')}}</span>
+    <div ng-show="future(appointment.time)">
+      <div class='col-md-12 form-group'>
+        <label class='control-label'>Address *</label>
+        <input name="address" type="text" class="form-control" ng-model="appointment.address" />
+        <span class="form-error" ng-show="form.address.$invalid && form.address.$dirty">{{errorMessage('address')}}</span>
+      </div>
+    </div>
+    <div ng-hide="future(appointment.time)">
+      <div class='col-sm-12 form-group'>
+
+        <label class='control-label'>Appointment Result</label>
+
+        <select name="result" class="form-control" ng-model="appointment.result">
+          <% Contact::Appointment.results.each do |key, value| %>
+            <option value="<%= key %>"><%= key.titleize %></option>
+          <% end %>
+        </select>
+      </div>
     </div>
     <div class='col-sm-12 form-group'>
       <label class='control-label'>Notes</label>
-      <input name="notes" type="text" class="form-control" ng-model="appointment.notes" />
-      <span class="form-error" ng-show="form.notes.$invalid && form.notes.$dirty">{{errorMessage('notes')}}</span>
+      <textarea name="notes" class="form-control" ng-model="appointment.notes" rows="5"></textarea>
     </div>
   </div>
   <div class="form-actions clearfix">
