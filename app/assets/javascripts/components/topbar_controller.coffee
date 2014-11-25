@@ -14,7 +14,7 @@ app.controller('TopbarController',
 
     $scope.closeTab = (id) ->
       delete $scope.contacts[id]
-      $state.go('contacts') if $stateParams['id'] == id
+      $state.go('contacts') if parseInt($stateParams['contactId']) == id
 
     $scope.endSession = ->
       $scope.callSession = {}
