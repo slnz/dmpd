@@ -17,7 +17,7 @@ module Api
             return {} unless params[:appointment]
             params.require(:appointment)
               .permit(
-                :time, :address, :notes)
+                :time, :address, :notes, :result)
           end
         end
       end

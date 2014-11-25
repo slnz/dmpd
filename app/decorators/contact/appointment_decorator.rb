@@ -4,5 +4,9 @@ class Contact
     def contact_name
       object.contact.try(:decorate).try(:name)
     end
+
+    def contact_status
+      object.contact.try(:status)
+    end
   end
 end

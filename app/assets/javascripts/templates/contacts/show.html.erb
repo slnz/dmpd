@@ -67,15 +67,50 @@
     </div>
   </div>
   <div class='form-title'>
+    Giving
+  </div>
+  <div class='row'>
+    <div class='col-sm-3 form-group'>
+      <label class='control-label'>Amount</label>
+      <input name="occupation" type="text" class="form-control" ng-model="contact.amount" />
+    </div>
+    <div class='col-sm-3 form-group'>
+      <label class='control-label'>Frequency</label>
+      <select class='form-control' ng-model="contact.frequency">
+      <option disabled="disabled">Choose a Frequency</option>
+      <% Contact.frequencies.each do |key, value| %>
+        <option value="<%= value %>"><%= key %></option>
+      <% end %>
+      </select>
+    </div>
+    <div class='col-sm-4 form-group'>
+      <label class='control-label'>Gift Date</label>
+      <span class="dropdown" dropdown on-toggle="toggled(open)">
+        <a href class="dropdown-toggle" dropdown-toggle>
+          <input type="text" class="form-control" data-ng-model="contact.gift_date">
+        </a>
+        <ul class="dropdown-menu">
+          <datetimepicker data-ng-model="contact.gift_date" />
+        </ul>
+      </span>
+    </div>
+    <div class='col-sm-2 form-group'>
+      <label class='control-label'>Thanks Sent</label>
+      <input type="checkbox" name="thanks" class="form-control" ng-model="contact.thanks" />
+    </div>
+  </div>
+  <div class='form-title'>
     Additional Information
   </div>
   <div class='row'>
     <div class='col-sm-6 form-group'>
       <label class='control-label'>Referer</label>
-      <select chosen name="referer_id" type="text" class="form-control" ng-model="contact.referers" data-placeholder="Choose a Referer" no-results-text="'Could not find any Referers'" ng-options="referer.id as referer.name for referer in referers">
-      </select>
-
-      <span class="form-error" ng-show="form.referer.$invalid && form.referer.$dirty">{{errorMessage('referer_id')}}</span>
+      <ui-select ng-model="contact.referer_id">
+        <ui-select-match placeholder="Select or Search for a Referer">{{$select.selected.name}}</ui-select-match>
+        <ui-select-choices repeat="referer.id as referer in referers | propsFilter: {name: $select.search}">
+          <div ng-bind-html="referer.name | highlight: $select.search"></div>
+        </ui-select-choices>
+      </ui-select>
     </div>
     <div class='col-sm-6 form-group'>
       <label class='control-label'>How Knows</label>

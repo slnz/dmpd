@@ -3,11 +3,11 @@
     <a ui-sref="contacts.show.appointments.new({contactId: contact.id})">
       <i class="fa fa-plus"></i>
     </a>
-    &nbsp;
-    <a ui-sref="contacts.show({contactId: contact.id})">
-      <i class="fa fa-arrow-left"></i>
-    </a>
   </div>
+  <a ui-sref="contacts.show({contactId: contact.id})">
+    <i class="fa fa-arrow-left"></i>
+  </a>
+  &nbsp;
   <i class="fa fa-calendar-o"></i>
   &nbsp;
   Appointments with {{contact.first_name}}
@@ -18,15 +18,29 @@
     <div class="month">{{appointment.time | dateFilter : 'MMM'}}</div>
     <div class="day">{{appointment.time | dateFilter : 'EEE'}}</div>
   </div>
-  <div class="content" ng-class="{active: future(appointment.time)}">
+  <div class="content" ng-class="{waiting: !future(appointment.time) && appointment.result == 'waiting', active: future(appointment.time)}">
     <h3>{{appointment.time | dateFilter : 'h:mm a'}}</h3>
     <h4>{{appointment.address}}</h4>
     <p>{{appointment.notes}}</p>
-    <a ui-sref="contacts.show.appointments.show({contactId: contact.id, appointmentId: appointment.id})" class="pull-right">
-      <span class="fa-stack fa-lg">
+    <div class="result pull-right">
+      <span class="fa-stack fa-lg" ng-show="!future(appointment.time) && appointment.result=='waiting'">
         <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+        <i class="fa fa-clock-o fa-stack-1x fa-inverse"></i>
       </span>
-    </a>
+      <span class="fa-stack fa-lg" ng-show="appointment.result=='support'">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-dollar fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="fa-stack fa-lg" ng-show="appointment.result=='callback_for_decision'">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-phone fa-stack-1x fa-inverse"></i>
+      </span>
+      <a ui-sref="contacts.show.appointments.show({contactId: contact.id, appointmentId: appointment.id})">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    </div>
   </div>
 </div>

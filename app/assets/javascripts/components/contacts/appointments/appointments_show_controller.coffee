@@ -17,6 +17,7 @@ app.controller('ContactAppointmentsShowController',
 
     success = ->
       angular.copy($scope.appointment, $scope.initial)
+      $scope.contact.status = $scope.appointment.contact_status
       $scope.form.$setPristine()
 
     $scope.saveAppointment = ->
