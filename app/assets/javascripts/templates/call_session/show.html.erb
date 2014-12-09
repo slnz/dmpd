@@ -30,6 +30,10 @@
       </div>
     </div>
   </div>
+  <div class="empty-state" ng-show="contacts.length == 0">
+    <div class="icon"><i class="fa fa-phone"></i></div>
+    No contacts to call yet.
+  </div>
 </div>
 <div class="pane left" ng-hide="validCallSession">
   <div class="card">
