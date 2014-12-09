@@ -1,6 +1,9 @@
 class Contact < ActiveRecord::Base
   paginates_per 500
-  has_one :referer, class_name: 'Contact', primary_key: 'referer_id', foreign_key: 'id'
+  has_one :referer,
+          class_name: 'Contact',
+          primary_key: 'referer_id',
+          foreign_key: 'id'
   has_many :calls, dependent: :destroy
   has_many :appointments, dependent: :destroy
   has_many :return_calls, dependent: :destroy
