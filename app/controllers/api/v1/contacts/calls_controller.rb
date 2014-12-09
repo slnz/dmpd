@@ -25,6 +25,12 @@ module Api
           render :fetch
         end
 
+        def destroy
+          load_call_by_id
+          @call.destroy
+          render :show
+        end
+
         private
 
         def steps
@@ -39,6 +45,10 @@ module Api
           @call ||= call_scope.find_by(end_time: nil)
           return unless !@call && params[:step] == 'init'
           fail ActionController::RoutingError, 'need to init call (init)'
+        end
+
+        def load_call_by_id
+          @call ||= call_scope.find(params[:id])
         end
 
         def load_state

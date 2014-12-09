@@ -7,4 +7,7 @@ app.factory('Call', ['$resource',
       fetch:
         method: 'GET'
         url: '/api/v1/contacts/:contactId/calls/fetch'
+      latest:
+        method: 'GET'
+        url: '/api/v1/call'
 ])
