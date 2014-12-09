@@ -23,4 +23,77 @@
       </div>
     </div>
   </div>
+  <div class="row-fluid">
+    <div class="col-md-12 flow-box next-blurb">
+      <div class="flow-border"></div>
+      <div ng-show="contact.status == 'callback_for_decision'">
+        <div class="flow-content">
+          <div class="response"><strong>Next Blurb</strong></div>
+          <p>
+            Hey is this {{contact.first_name}}?
+          </p>
+          <p>
+            Hi {{contact.first_name}}. This is {{current_user.first_name}} with Student Life.
+          </p>
+          <p>
+            Is this a good time to talk briefly?
+          </p>
+          <p>
+            {{contact.first_name}}, I'm just calling to see where the Lord is leading you concerning your investment as a Ministry Partner?
+          </p>
+        </div>
+      </div>
+      <div ng-show="contact.status == 'callback_for_contacts'">
+        <div class="flow-content">
+          <div class="response"><strong>Next Blurb</strong></div>
+          <p>
+            Hey is this {{contact.first_name}}?
+          </p>
+          <p>
+            Hi {{contact.first_name}}. This is {{current_user.first_name}} with Student Life.
+          </p>
+          <p>
+            Is this a good time to talk briefly?
+          </p>
+          <p>
+            We talked on the phone the other day and you asked me to call you so you could suggest some people to me that you thought might appreciate the opportunity to know more about our team's ministry.
+          </p>
+        </div>
+      </div>
+      <div ng-show="contact.status == 'callback_for_appointment'">
+        <div class="flow-content">
+          <div class="response"><strong>Next Blurb</strong></div>
+          <p>
+            Hey is this {{contact.first_name}}?
+          </p>
+          <p>
+            Hi {{contact.first_name}}. This is {{current_user.first_name}} with Student Life.
+          </p>
+          <p>
+            Is this a good time to talk briefly?
+          </p>
+          <p>
+            We talked on the phone the other day and you asked me to call you to see when we can set up a time to meet. Are we able to set a time for that?
+          </p>
+        </div>
+      </div>
+      <div ng-show="contact.status == 'base_new'">
+        <div class="flow-content">
+          <div class="response"><strong>Next Blurb</strong></div>
+          <p>
+            Hey is this {{contact.first_name}}?
+          </p>
+          <p>
+            Hi {{contact.first_name}}. My name is {{current_user.first_name}}. <span ng-show="contact.referer_name">A friend of ours, {{contact.referer_name}}, suggested I give you a call.</span>
+          </p>
+          <p>
+            Is this a good time to talk briefly?
+          </p>
+          <p>
+            {{contact.first_name}}, I’m a missionary with Student Life. Have you heard of Student Life before?
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

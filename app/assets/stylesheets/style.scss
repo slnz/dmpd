@@ -586,6 +586,9 @@ body > footer {
 .flow-box {
   padding: 0;
   position: relative;
+  &.next-blurb {
+    opacity: 0.8;
+  }
   a {
     cursor: pointer;
   }

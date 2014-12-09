@@ -209,9 +209,12 @@ module Api
           when :no_contacts
             @message = 'Not interested in giving contacts'
             jump_to :stats
+          when :must_callback
+            @message = 'Must callback for contacts'
+            jump_to :callback
           else
             @possible_states =
-              [:got_contacts, :no_contacts]
+              [:got_contacts, :no_contacts, :must_callback]
           end
         end
 
