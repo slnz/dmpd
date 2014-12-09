@@ -3,27 +3,6 @@
 </div>
 <div class="flow clearfix text-center">
   <div class="row-fluid">
-    <div class="col-md-12 flow-box">
-      <div class="flow-border"></div>
-      <div class="flow-content">
-        <h4>The horse is made ready for the day of battle, but victory rests with the Lord.</h4>
-        <a ng-click="update_call('start_call', 'answered')"
-           class="btn btn-primary btn-block btn-lg">Answered</a>
-        <br>
-        <div class="row clearfix">
-          <div class="col-sm-6">
-            <a ng-click="update_call('start_call', 'line_busy')"
-               class="btn btn-default btn-block btn-sm">Busy</a>
-          </div>
-          <div class="col-sm-6">
-            <a ng-click="update_call('start_call', 'no_answer')"
-               class="btn btn-default btn-block btn-sm">No Answer</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row-fluid">
     <div class="col-md-12 flow-box next-blurb">
       <div class="flow-border"></div>
       <div ng-show="contact.status == 'callback_for_decision'">
@@ -92,6 +71,27 @@
           <p>
             {{contact.first_name}}, I’m a missionary with Student Life. Have you heard of Student Life before?
           </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="col-md-12 flow-box">
+      <div class="flow-border"></div>
+      <div class="flow-content">
+        <h4>The horse is made ready for the day of battle, but victory rests with the Lord.</h4>
+        <a ng-click="update_call('start_call', 'answered')"
+           class="btn btn-primary btn-block btn-lg">Answered</a>
+        <br>
+        <div class="row clearfix">
+          <div class="col-sm-6">
+            <a ng-click="update_call('start_call', 'line_busy')"
+               class="btn btn-default btn-block btn-sm">Busy</a>
+          </div>
+          <div class="col-sm-6">
+            <a ng-click="update_call('start_call', 'no_answer')"
+               class="btn btn-default btn-block btn-sm">No Answer</a>
+          </div>
         </div>
       </div>
     </div>

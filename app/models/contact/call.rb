@@ -6,7 +6,7 @@ class Contact
     unless instance_methods.include? :state
       enum state: [:not_in, :must_callback, :got_appointment, :no_appointment,
                    :got_contacts, :no_contacts, :got_support, :no_support,
-                   :answered, :line_busy, :no_answer]
+                   :answered, :line_busy, :no_answer, :must_callback_to_talk]
     end
     unless instance_methods.include? :step
       enum step: [:init, :start_call, :new_contact,

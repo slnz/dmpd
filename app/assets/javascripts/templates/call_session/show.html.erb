@@ -18,6 +18,9 @@
         <div class="pull-right">
           <i class="fa" ng-class="{'fa-star-o': !contact.pinned, 'fa-star': contact.pinned}"></i>
         </div>
+        <div class="callback-when">
+          <strong ng-show="contact.return_call.time"><i class="fa fa-phone"></i> Callback {{contact.return_call.time | dateFilter : 'dd MMM h:mm a'}}</strong>
+        </div>
       </a>
       <div class="{{contact.category}}" ng-show="expanded.id == contact.id">
         <a ui-sref="call_session.call({contactId: contact.id})" class="btn btn-primary btn-block btn-sm"><i class="fa fa-phone"></i> Call <span ng-bind-html="contact.name | highlight: search"></span></a>
