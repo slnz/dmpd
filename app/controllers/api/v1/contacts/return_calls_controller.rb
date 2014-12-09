@@ -81,7 +81,7 @@ module Api
             return {} unless params[:return_call]
             params.require(:return_call)
               .permit(
-                :time, :notes)
+                :time, :notes, :state)
           end
         end
       end

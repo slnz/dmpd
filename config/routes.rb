@@ -15,12 +15,13 @@ Rails.application.routes.draw do
         value: 'application/dmpd.staffportal.org; version=1' },
       parameter: { name: 'version', value: '1' },
       path: { value: 'v1' }) do
+      resource :call, only: [:show]
       resources :contacts do
         collection do
           get 'status'
         end
         scope module: :contacts do
-          resources :calls, only: [:index, :show, :update] do
+          resources :calls, except: [:create] do
             collection do
               get 'fetch'
             end
