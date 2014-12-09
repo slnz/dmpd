@@ -36,7 +36,8 @@ module Api
       def destroy
         load_appointment
         @appointment.destroy
-        redirect_to appointments_path
+        decorate_appointment
+        render :show
       end
 
       protected

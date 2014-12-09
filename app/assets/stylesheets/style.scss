@@ -338,9 +338,9 @@ body > footer {
     right:0;
     bottom: 75px;
     padding: 20px;
-    overflow-x: hidden;
-    &.narrow {
-      right:400px;
+    overflow: auto;
+    &.narrow > form {
+      margin-right:400px;
     }
   }
   &.right-overlay {
@@ -394,47 +394,64 @@ body > footer {
     }
   }
 }
-.navbar-inverse .topbar {
-  margin-left: 380px;
-  > li {
-    > a {
-      height: 50px;
-      line-height: 50px;
-      padding: 0 15px;
-      background-color: lighten(#549abd, 10%);
-      float: left;
-      transition: all 0.2s;
-      color: #fff;
-      cursor: pointer;
-      &:hover {
-        background-color: lighten(#549abd, 5%);
-      }
-    }
-    > a.contact {
-      min-width: 200px;
-      &.new {
-        min-width: 0;
-        margin-right: 10px;
-      }
-    }
-    > a.closetab {
-      margin-right: 5px;
-    }
-    &.active {
-      > a.contact {
-        background-color: #fff;
-        color: #444;
+.nav-container {
+  position: fixed;
+  top: 0;
+  right: 150px;
+  left: 390px;
+  height: 50px;
+  overflow-x: auto;
+  .topbar {
+    width: 100%;
+    font-size: 0;
+    white-space: nowrap;
+    > li {
+      font-size: 15px;
+      display: inline-block;
+      margin-right: 1px;
+      float: none;
+      > a {
+        height: 50px;
+        line-height: 50px;
+        padding: 0 15px;
+        background-color: lighten(#549abd, 10%);
+        transition: all 0.2s;
+        color: #fff;
+        cursor: pointer;
         &:hover {
-          color: #444;
-          background-color: #fff;
+          background-color: lighten(#549abd, 5%);
+        }
+      }
+      > a.contact {
+        text-overflow: ellipsis;
+        padding-right: 50px;
+        &.new {
+          width: auto;
+          padding-right: 20px;
+          min-width: 0;
+          margin-right: 1px;
         }
       }
       > a.closetab {
-        background-color: darken(#fff, 10%);
-        color: #777;
-        &:hover {
-          color: #999;
-          background-color: darken(#fff, 5%);
+        float: right;
+        z-index: 99;
+      }
+      &.active {
+        > a.contact {
+          background-color: #fff;
+          color: #444;
+          &:hover {
+            color: #444;
+            background-color: #fff;
+          }
+        }
+        > a.closetab {
+          background-color: darken(#fff, 10%);
+          color: #777;
+          &:hover {
+            color: #999;
+            background-color: darken(#fff, 5%);
+          }
         }
       }
     }
@@ -703,5 +720,16 @@ body > footer {
         color: #fff;
       }
     }
+  }
+}
+a {
+  .fa-stack {
+    .red {
+      color: #d9534f;
+    }
+    cursor: pointer;
+  }
+  &:hover > .fa-stack > .red {
+    color: darken(#d9534f, 10%);
   }
 }
