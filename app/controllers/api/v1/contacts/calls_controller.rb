@@ -25,6 +25,12 @@ module Api
           render :fetch
         end
 
+        def destroy
+          load_call_by_id
+          @call.destroy
+          render :show
+        end
+
         private
 
         def steps
@@ -39,6 +45,10 @@ module Api
           @call ||= call_scope.find_by(end_time: nil)
           return unless !@call && params[:step] == 'init'
           fail ActionController::RoutingError, 'need to init call (init)'
+        end
+
+        def load_call_by_id
+          @call ||= call_scope.find(params[:id])
         end
 
         def load_state
@@ -131,6 +141,9 @@ module Api
           when :not_in
             @message = 'Not in'
             jump_to :not_present
+          when :must_callback_to_talk
+            @message = 'Not a good time to talk'
+            jump_to :callback
           when :must_callback
             @message = 'Interested in meeting but callback to schedule'
             @transition = :callback_for_appointment
@@ -145,7 +158,8 @@ module Api
             jump_to :ask_for_contacts
           else
             @possible_states =
-              [:not_in, :must_callback, :got_appointment, :no_appointment]
+              [:not_in, :must_callback_to_talk,
+               :must_callback, :got_appointment, :no_appointment]
           end
         end
 
@@ -154,6 +168,9 @@ module Api
           when :not_in
             @message = 'Not in'
             jump_to :not_present
+          when :must_callback_to_talk
+            @message = 'Not a good time to talk'
+            jump_to :callback
           when :must_callback
             @message = 'Must callback for contacts'
             jump_to :callback
@@ -165,7 +182,8 @@ module Api
             jump_to :stats
           else
             @possible_states =
-              [:not_in, :must_callback, :got_contacts, :no_contacts]
+              [:not_in, :must_callback_to_talk,
+               :must_callback, :got_contacts, :no_contacts]
           end
         end
 
@@ -174,6 +192,9 @@ module Api
           when :not_in
             @message = 'Not in'
             jump_to :not_present
+          when :must_callback_to_talk
+            @message = 'Not a good time to talk'
+            jump_to :callback
           when :must_callback
             @message = 'Must callback for decision'
             jump_to :callback
@@ -187,7 +208,8 @@ module Api
             jump_to :stats
           else
             @possible_states =
-              [:not_in, :must_callback, :got_support, :no_support]
+              [:not_in, :must_callback_to_talk,
+               :must_callback, :got_support, :no_support]
           end
         end
 
@@ -199,9 +221,16 @@ module Api
           when :no_contacts
             @message = 'Not interested in giving contacts'
             jump_to :stats
+          when :must_callback_to_talk
+            @message = 'Not a good time to talk'
+            jump_to :callback
+          when :must_callback
+            @message = 'Must callback for contacts'
+            jump_to :callback
           else
             @possible_states =
-              [:got_contacts, :no_contacts]
+              [:got_contacts, :must_callback_to_talk,
+               :no_contacts, :must_callback]
           end
         end
 

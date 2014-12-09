@@ -15,8 +15,13 @@ app.controller('CallShowController',
         state: state, (response) ->
           $state.go('call_session.call.' + response.step)
       )
+    $scope.delete_call = ->
+      $scope.call.$remove(contactId: $stateParams['contactId'])
+      $state.go('call_session')
     $scope.remove_active_contact = ->
-      $scope.$parent.contacts =
-        _.without($scope.$parent.contacts,
-          _.findWhere($scope.$parent.contacts, $scope.$parent.expanded))
+      $scope.contact =
+        Contact.get(id: $stateParams['contactId'], $scope.post_success)
+
+    $scope.post_success = ->
+      $scope.$parent.update_contact($scope.contact)
 ])

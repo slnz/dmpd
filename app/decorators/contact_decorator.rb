@@ -11,6 +11,10 @@ class ContactDecorator < ApplicationDecorator
     status.to_s.split('_').drop(1).join(' ').titleize
   end
 
+  def status_full_title
+    status.to_s.titleize
+  end
+
   def referer_name
     object.referer.try(:decorate).try(:name)
   end

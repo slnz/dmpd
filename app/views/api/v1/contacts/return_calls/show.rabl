@@ -1,2 +1,2 @@
 object :@return_call
-attributes :id, :time, :notes
+attributes :id, :time, :notes, :state
