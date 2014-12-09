@@ -1,4 +1,5 @@
-<div class="clearfix">
+<form novalidate ng-submit="updateContact()" name="form">
+  <div class="clearfix">
     <div class="pull-right">
       <a ui-sref="contacts.show.appointments.index({contactId: contact.id})"
          class="btn btn-default">
@@ -7,21 +8,20 @@
        </a>
     </div>
   </div>
-<form novalidate ng-submit="updateContact()" name="form">
   <div class='form-title'>
     {{contact.first_name}}
     {{contact.last_name}}
   </div>
   <div class='row'>
-    <div class='col-sm-5 form-group' ng-class="errorClass('first_name')">
+    <div class='col-lg-5 form-group' ng-class="errorClass('first_name')">
       <label class='control-label'>First Name *</label>
       <input type="text" name="first_name" class="form-control" ng-model="contact.first_name" /><span class="form-error" ng-show="form.first_name.$invalid && form.first_name.$dirty">{{errorMessage('first_name')}}</span>
     </div>
-    <div class='col-sm-5 form-group'>
+    <div class='col-lg-5 form-group'>
       <label class='control-label'>Last Name *</label>
       <input name="last_name" type="text" class="form-control" ng-model="contact.last_name" /><span class="form-error" ng-show="form.last_name.$invalid && form.last_name.$dirty">{{errorMessage('last_name')}}</span>
     </div>
-    <div class='col-sm-2 form-group'>
+    <div class='col-lg-2 form-group'>
       <label class='control-label'>Priority Code *</label>
       <select name="priority_code" type="text" class="form-control" ng-model="contact.priority_code">
         <% Contact.priority_codes.each do |key, value| %>

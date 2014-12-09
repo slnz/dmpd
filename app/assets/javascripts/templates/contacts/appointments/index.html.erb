@@ -41,6 +41,16 @@
           <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
         </span>
       </a>
+      <a ng-click="delete_appointment(appointment)">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x red"></i>
+          <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
     </div>
   </div>
+</div>
+<div class="empty-state" ng-show="appointments.length == 0">
+  <div class="icon"><i class="fa fa-calendar"></i></div>
+  No appointments yet.
 </div>
