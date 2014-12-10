@@ -1,0 +1,40 @@
+<h4>
+  <a ui-sref="contacts.show({contactId: contact.id})">
+    <i class="fa fa-arrow-left"></i>
+  </a>
+  &nbsp;
+  <i class="fa fa-history"></i>
+  &nbsp;
+  Call History
+</h4>
+<div class="set_appointment clearfix" ng-repeat="call in calls">
+  <div class="date">
+    <div class="day-num">{{call.created_at | dateFilter : 'dd'}}</div>
+    <div class="month">{{call.created_at | dateFilter : 'MMM'}}</div>
+    <div class="day">{{call.created_at | dateFilter : 'EEE'}}</div>
+  </div>
+  <div class="content active">
+    <h3>{{call.created_at | dateFilter : 'h:mm a'}}</h3>
+    <h4><a ui-sref="contacts.show({contactId: call.contact_id})">{{call.contact_name}}</a></h4>
+    <p ng-show="call.reason_title">Reason for Call: <strong>{{call.reason_title}}</strong></p>
+    <p>{{call.notes}}</p>
+    <div class="result pull-right">
+      <a ui-sref="contacts.show.calls.show({contactId: call.contact_id, callId: call.id})">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+      <a ng-click="delete_call(call)">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x red"></i>
+          <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="empty-state" ng-show="calls.length == 0">
+  <div class="icon"><i class="fa fa-history"></i></div>
+  No calls yet.
+</div>
