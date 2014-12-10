@@ -45,6 +45,11 @@ app.config([ '$stateProvider', '$urlRouterProvider', '$locationProvider'
         templateUrl: 'contacts/show.html'
         controller: 'ContactsShowController'
       )
+      .state('appointments',
+        url: '/appointments'
+        templateUrl: 'appointments/index.html'
+        controller: 'AppointmentsIndexController'
+      )
       .state('contacts.show.appointments',
         url: '/appointments'
         templateUrl: 'contacts/appointments/base.html'
@@ -64,20 +69,24 @@ app.config([ '$stateProvider', '$urlRouterProvider', '$locationProvider'
         templateUrl: 'contacts/appointments/show.html'
         controller: 'ContactAppointmentsShowController'
       )
-      .state('appointments',
-        url: '/appointments'
-        templateUrl: 'appointments/index.html'
-        controller: 'AppointmentsIndexController'
+      .state('contacts.show.calls',
+        url: '/calls'
+        templateUrl: 'contacts/calls/base.html'
       )
-      .state('appointments.new',
-        url: '/new'
-        templateUrl: 'appointments/new.html'
-        controller: 'AppointmentsNewController'
+      .state('contacts.show.calls.index',
+        url: '/'
+        templateUrl: 'contacts/calls/index.html'
+        controller: 'ContactCallsIndexController'
       )
-      .state('appointments.show',
-        url: '/:appointmentId'
-        templateUrl: 'appointments/show.html'
-        controller: 'AppointmentsShowController'
+      .state('contacts.show.calls.show',
+        url: '/:callId'
+        templateUrl: 'contacts/calls/show.html'
+        controller: 'ContactCallsShowController'
+      )
+      .state('calls',
+        url: '/calls'
+        templateUrl: 'calls/index.html'
+        controller: 'CallsIndexController'
       )
       .state('contacts.show.callbacks',
         url: '/callbacks'

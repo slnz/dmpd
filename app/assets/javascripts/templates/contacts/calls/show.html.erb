@@ -1,0 +1,52 @@
+<h4>
+  <a ui-sref="contacts.show.calls.index({contactId: contact.id})">
+    <i class="fa fa-arrow-left"></i>
+  </a>
+  &nbsp;
+  <i class="fa fa-calendar-o"></i>
+  &nbsp;
+  Call
+</h4>
+<div class="set_appointment clearfix">
+  <div class="date">
+    <div class="day-num">{{call.created_at | dateFilter : 'dd'}}</div>
+    <div class="month">{{call.created_at | dateFilter : 'MMM'}}</div>
+    <div class="day">{{call.created_at | dateFilter : 'EEE'}}</div>
+  </div>
+  <div class="content active">
+    <h3>{{call.created_at | dateFilter : 'h:mm a'}}</h3>
+    <h4>{{call.contact_name}}</h4>
+    <p ng-show="call.reason_title">Reason for Call: <strong>{{call.reason_title}}</strong></p>
+    <br>
+  </div>
+</div>
+<br>
+<div class="event" ng-repeat="event in call.events">
+  <h4>{{event.message}}</h4>
+  <div class="history clearfix">
+    <div class="row">
+      <div class="col-md-12">
+        <span ng-show="event.transition">
+          <span class="label label-warning">
+            <strong>Transition</strong> {{event.transition}}
+          </span>
+          &nbsp;
+          <i class="fa fa-angle-right"></i>
+        </span>
+        <span ng-show="event.state">
+          <span class="label label">
+            <strong>Action</strong> {{event.state}}
+          </span>
+          &nbsp;
+          <i class="fa fa-angle-right"></i>
+        </span>
+        <span class="label">
+          <strong>Step</strong> {{event.step}}
+        </span>
+        <div class="pull-right">
+          <span class="time" am-time-ago="event.start_time" am-preprocess="unix"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

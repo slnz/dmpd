@@ -3,9 +3,14 @@
     <div class="pull-right">
       <a ui-sref="contacts.show.appointments.index({contactId: contact.id})"
          class="btn btn-default">
-         <i class="fa fa-calendar-o"></i>
-         Appointments
-       </a>
+        <i class="fa fa-calendar-o"></i>
+        Appointments
+      </a>
+      <a ui-sref="contacts.show.calls.index({contactId: contact.id})"
+         class="btn btn-default">
+        <i class="fa fa-history"></i>
+        Calls
+      </a>
     </div>
   </div>
   <div class='form-title'>
@@ -158,4 +163,4 @@
   </div>
 </form>
 
-<div ui-view ng-show="$state.includes('contacts.show.appointments')" class="pane right-overlay"></div>
+<div ui-view ng-show="$state.includes('contacts.show.appointments') || $state.includes('contacts.show.calls')" class="pane right-overlay"></div>

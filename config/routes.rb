@@ -15,7 +15,11 @@ Rails.application.routes.draw do
         value: 'application/dmpd.staffportal.org; version=1' },
       parameter: { name: 'version', value: '1' },
       path: { value: 'v1' }) do
-      resource :call, only: [:show]
+      resources :calls, only: [:index, :show, :destroy] do
+        collection do
+          get 'latest'
+        end
+      end
       resources :contacts do
         collection do
           get 'status'

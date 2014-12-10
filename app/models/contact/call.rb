@@ -2,6 +2,9 @@ class Contact
   class Call < ActiveRecord::Base
     belongs_to :contact
     has_many :events, dependent: :destroy
+    before_create :set_reason
+
+    enum reason: Contact.statuses unless instance_methods.include? :reason
 
     unless instance_methods.include? :state
       enum state: [:not_in, :must_callback, :got_appointment, :no_appointment,
@@ -13,6 +16,10 @@ class Contact
                   :must_callback_for_contacts, :must_callback_for_decision,
                   :ask_for_contacts, :appointment, :callback, :support,
                   :not_present, :input_contacts, :stats, :end]
+    end
+
+    def set_reason
+      self.reason = contact.status
     end
   end
 end
