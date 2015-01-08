@@ -51,7 +51,7 @@ RSpec.describe Log, type: :model do
       create(:contact, user: user, frequency: 1, amount: 100)
       create(:contact, user: user, frequency: 0.5, amount: 50)
       log = generate_log
-      expect(log.total_monthly_pledged).to eq(125)
+      expect(log.total_monthly_pledged).to eq(200)
     end
 
     it 'set_total_special_pledged' do

@@ -100,7 +100,7 @@ class Log < ActiveRecord::Base
 
   def set_total_monthly_pledged
     self.total_monthly_pledged =
-      user.contacts.where('frequency > 0').sum('amount * frequency')
+      user.contacts.where('frequency > 0').sum('amount / frequency')
   end
 
   def set_total_special_pledged
@@ -110,7 +110,7 @@ class Log < ActiveRecord::Base
 
   def set_total_monthly_confirmed
     self.total_monthly_confirmed =
-      user.contacts.confirmed.where('frequency > 0').sum('amount * frequency')
+      user.contacts.confirmed.where('frequency > 0').sum('amount / frequency')
   end
 
   def set_total_special_confirmed
