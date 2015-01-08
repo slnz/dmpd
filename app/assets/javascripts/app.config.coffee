@@ -15,6 +15,5 @@ window.app = angular.module('dmpd',[
 ])
 
 app.config ($httpProvider) ->
-  authToken =
-    document.getElementsByTagName('meta')['csrf-token'].getAttribute('content')
+  authToken = $('meta[name=csrf-token]').attr('content')
   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken

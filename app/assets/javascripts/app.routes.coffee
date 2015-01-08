@@ -103,6 +103,11 @@ app.config([ '$stateProvider', '$urlRouterProvider', '$locationProvider'
         templateUrl: 'callbacks/show.html'
         controller: 'CallbacksShowController'
       )
+      .state('logs',
+        url: '/logs'
+        templateUrl: 'logs/index.html'
+        controller: 'LogsIndexController'
+      )
       .state('call_session',
         url: '/call_session'
         templateUrl: 'call_session/show.html'

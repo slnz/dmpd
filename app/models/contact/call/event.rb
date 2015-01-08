@@ -5,6 +5,7 @@ class Contact
       enum state: Contact::Call.states
       enum step: Contact::Call.steps
       enum transition: Contact.statuses
+      validates :step, uniqueness: { scope: :call_id }
     end
   end
 end

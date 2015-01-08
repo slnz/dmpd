@@ -1,0 +1,39 @@
+<div class="pane center">
+  <h3 class="page-title"><i class="fa fa-bar-chart"></i> Reports</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Week</th>
+        <th>Hours Calling</th>
+        <th>Calls Made</th>
+        <th>Response to Appts Ask</th>
+        <th>Appts Set</th>
+        <th>Appts %</th>
+        <th>Decisions</th>
+        <th>Yes to Recurring</th>
+        <th>Recurring %</th>
+        <th>Monthly Pledged</th>
+        <th>Average Pledged</th>
+        <th>Special Pledged</th>
+        <th>Contact Ratio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="log in logs">
+        <td>{{log.start | dateFilter : 'dd MMM'}} - {{log.finish | dateFilter : 'dd MMM'}}</td>
+        <td>{{log.calling_hours | number: 1}}</td>
+        <td>{{log.calls_made}}</td>
+        <td>{{log.response_to_appointment_ask}}</td>
+        <td>{{log.appointment_set}}</td>
+        <td>{{(log.appointment_set / log.response_to_appointment_ask) * 100 | number : 0}}</td>
+        <td>{{log.decisions}}</td>
+        <td>{{log.yes_to_monthly}}</td>
+        <td>{{(log.yes_to_monthly / log.decisions) * 100 | number : 0}}</td>
+        <td>{{log.total_monthly_pledged | currency}}</td>
+        <td>{{log.total_monthly_pledged / log.yes_to_monthly | currency}}</td>
+        <td>{{log.total_special_pledged | currency}}</td>
+        <td>{{log.received_contacts / log.used_contacts | number: 2}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

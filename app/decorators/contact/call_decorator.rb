@@ -10,5 +10,9 @@ class Contact
     def reason_title
       reason.to_s.titleize
     end
+
+    def length
+      (end_time - created_at) / 60 / 60
+    end
   end
 end
