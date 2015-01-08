@@ -21,7 +21,7 @@ body > footer {
   border-radius: 0;
   border: 0;
   &.navbar-inverse {
-    background-color: #549abd;
+    background-color: #2C858D;
   }
   .navbar-brand {
     font-weight: lighter;
@@ -32,6 +32,50 @@ body > footer {
       margin-top: -10px;
       margin-right: 10px;
     }
+  }
+}
+h3.page-title {
+  padding: 0 0 20px 0;
+  margin: 0;
+}
+.statsboard {
+  .row {
+    .col-md-4 {
+      padding: 0 5px;
+    }
+    .col-md-2 {
+      padding-right: 5px;
+    }
+  }
+  .stat, .icon {
+    padding: 20px;
+    margin-bottom: 10px;
+    border: 1px transparent solid;
+    h1 {
+      font-size: 40px;
+      font-weight: bold;
+      line-height: 40px;
+      margin: 0;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 15px;
+      font-weight: lighter;
+      line-height: 20px;
+      margin: 0;
+    }
+  }
+  .stat {
+    color: gray;
+    background-color: white;
+    border-color: #ccc;
+  }
+  .icon {
+    color: #fff;
+    background-color: #38aab4;
+    text-align: right;
+    border-color: #38aab4;
   }
 }
 .card {
@@ -401,7 +445,11 @@ body > footer {
   left: 390px;
   height: 50px;
   overflow-x: auto;
+  &.expanded {
+    left: 60px;
+  }
   .topbar {
+    color: #fff;
     width: 100%;
     font-size: 0;
     white-space: nowrap;
@@ -414,12 +462,12 @@ body > footer {
         height: 50px;
         line-height: 50px;
         padding: 0 15px;
-        background-color: lighten(#549abd, 10%);
+        background-color: lighten(#2C858D, 10%);
         transition: all 0.2s;
         color: #fff;
         cursor: pointer;
         &:hover {
-          background-color: lighten(#549abd, 5%);
+          background-color: lighten(#2C858D, 5%);
         }
       }
       > a.contact {
@@ -581,7 +629,7 @@ body > footer {
   }
 }
 .flow-title {
-  background-color: #1abc9c;
+  background-color: #38aab4;
   color: white;
   font-size: 18px;
   padding: 16px 25px;
@@ -702,7 +750,7 @@ body > footer {
     color: #fff;
     padding: 20px;
     &.active {
-      background-color: #1abc9c;
+      background-color: #38aab4;
     }
     &.waiting {
       background-color: #f0bc2f;

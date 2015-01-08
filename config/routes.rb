@@ -40,6 +40,11 @@ Rails.application.routes.draw do
         end
       end
       resources :appointments
+      resources :logs, only: [:index, :show, :destroy] do
+        collection do
+          get 'latest'
+        end
+      end
     end
   end
 

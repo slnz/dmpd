@@ -7,22 +7,22 @@
     <div class="history clearfix">
       <div class="row">
         <div class="col-md-12">
-          <span ng-show="event.transition">
-            <span class="label label-warning">
-              <strong>Transition</strong> {{event.transition}}
-            </span>
-            &nbsp;
-            <i class="fa fa-angle-right"></i>
+          <span class="label">
+            <strong>Step</strong> {{event.step_title}}
           </span>
           <span ng-show="event.state">
+            <i class="fa fa-angle-right"></i>
             <span class="label label">
-              <strong>Action</strong> {{event.state}}
+              <strong>Action</strong> {{event.state_title}}
+            </span>
+          </span>
+          <span ng-show="event.transition">
+            <i class="fa fa-angle-right"></i>
+            &nbsp;
+            <span class="label label-warning">
+              <strong>Transition</strong> {{event.transition_title}}
             </span>
             &nbsp;
-            <i class="fa fa-angle-right"></i>
-          </span>
-          <span class="label">
-            <strong>Step</strong> {{event.step}}
           </span>
           <div class="pull-right">
             <span class="time" am-time-ago="event.start_time" am-preprocess="unix"></span>

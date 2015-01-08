@@ -19,7 +19,7 @@ class Contact
     end
 
     def set_reason
-      self.reason = contact.status
+      self.reason = contact.try(:status)
     end
   end
 end

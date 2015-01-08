@@ -94,8 +94,8 @@ module Api
           unless steps.include?(step)
             fail ActionController::RoutingError, 'jump_step not found'
           end
-          @call.events.create(
-            step: step,
+          @call.events.where(step: steps[@step])
+            .first_or_create.update(
             state: @state,
             message: @message,
             transition: @transition
@@ -109,6 +109,7 @@ module Api
         def init
           build_call
           save_call
+          @step = :init
           @message = 'Dialing'
           jump_to :start_call
         end

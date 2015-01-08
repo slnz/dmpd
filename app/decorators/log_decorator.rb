@@ -1,0 +1,2 @@
+class LogDecorator < ApplicationDecorator
+end

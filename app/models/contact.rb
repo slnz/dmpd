@@ -43,16 +43,12 @@ class Contact < ActiveRecord::Base
 
   enum category: [:base, :callback, :appointment, :maintain]
 
+  scope :confirmed, -> { where(confirmed: true) }
+
   scope :calls, (lambda do
     where(status:
       Contact.statuses[:base_new]..Contact.statuses[:callback_for_contacts])
   end)
-
-  def status=(status)
-    super(status)
-    return unless valid?
-    send "#{status.to_s.split('_')[0]}!"
-  end
 
   def frequency=(frequency)
     super frequency.to_d
@@ -68,6 +64,11 @@ class Contact < ActiveRecord::Base
       'Semi-Annual' => (6.0).to_d,
       'Annual' => (12.0).to_d,
       'Biennial' => (24.0).to_d }
+  end
+
+  def status=(status)
+    super(status)
+    self.category = status.to_s.split('_')[0].to_sym unless status.nil?
   end
 
   protected

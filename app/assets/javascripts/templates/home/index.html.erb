@@ -1,0 +1,148 @@
+<div class="pane center statsboard">
+  <h3 class="page-title"><i class="fa fa-home"></i> Dashboard<br><small>Latest Statistics: {{latest.start | dateFilter : 'dd MMM yyyy'}} - {{latest.finish | dateFilter : 'dd MMM yyyy'}}</small></h3>
+  <div class="row">
+    <div class="col-md-2">
+      <div class="icon">
+        <h1><i class="fa fa-user"></i></h1>
+        <p>Contacts</p>
+      </div>
+    </div>
+    <div class="col-md-10 row">
+      <div class="col-md-4">
+        <div class="stat">
+          <h1>{{latest.received_contacts}}</h1>
+          <p>Contact Received</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat">
+          <h1>{{latest.used_contacts}}</h1>
+          <p>Contact Used</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat">
+          <h1 ng-show="latest.used_contacts != 0">{{latest.received_contacts / latest.used_contacts | number: 2}}</h1>
+          <h1 ng-hide="latest.used_contacts != 0">0</h1>
+          <p>Contact Ratio</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <div class="icon">
+        <h1><i class="fa fa-phone"></i></h1>
+        <p>Calls</p>
+      </div>
+    </div>
+    <div class="col-md-10 row">
+      <div class="col-md-4">
+        <div class="stat">
+          <h1>{{latest.calling_hours | number: 1}}</h1>
+          <p>Calling Hours</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat">
+          <h1>{{latest.calls_made}}</h1>
+          <p>Calls Made</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat">
+          <h1>{{latest.appointment_asks}}</h1>
+          <p>Appointments Asked For</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat">
+          <h1>{{latest.response_to_appointment_ask}}</h1>
+          <p>Response to Ask</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat">
+          <h1>{{latest.contact_asks}}</h1>
+          <p>Contacts Asked For</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <div class="icon">
+        <h1><i class="fa fa-calendar-o"></i></h1>
+        <p>Appointments</p>
+      </div>
+    </div>
+    <div class="col-md-10 row">
+      <div class="col-md-4">
+        <div class="stat">
+          <h1>{{latest.appointment_set}}</h1>
+          <p>Appointments Set</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat">
+          <h1>{{latest.decisions}}</h1>
+          <p>Decisions</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat">
+          <h1>{{latest.yes_to_monthly}}</h1>
+          <p>Yes to Recurring</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <div class="icon">
+        <h1><i class="fa fa-money"></i></h1>
+        <p>Financials</p>
+      </div>
+    </div>
+    <div class="col-md-10 row">
+      <div class="col-md-4">
+        <div class="stat">
+          <h1>{{latest.total_monthly_pledged | currency}}</h1>
+          <p>Monthly Pledged</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat">
+          <h1>{{latest.total_monthly_confirmed | currency}}</h1>
+          <p>Monthly Confirmed</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat">
+          <h1 ng-show="latest.total_monthly_pledged != 0">{{(latest.total_monthly_confirmed / latest.total_monthly_pledged) * 100 | number: 0}}</h1>
+          <h1 ng-hide="latest.total_monthly_pledged != 0">100</h1>
+          <p>Monthly Confirmed %</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat">
+          <h1>{{latest.total_special_pledged | currency}}</h1>
+          <p>Special Pledged</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat">
+          <h1>{{latest.total_special_confirmed | currency}}</h1>
+          <p>Special Confirmed</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat">
+          <h1 ng-show="latest.total_special_pledged != 0">{{(latest.total_special_confirmed / latest.total_special_pledged) * 100 | number: 0}}</h1>
+          <h1 ng-hide="latest.total_special_pledged != 0">100</h1>
+          <p>Special Confirmed %</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
