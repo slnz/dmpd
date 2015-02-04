@@ -1,6 +1,8 @@
 class UpdateForRefactor < ActiveRecord::Migration
   def change
-    drop_table :dmpd_contact_card_boxes if table_exists? :dmpd_contact_card_boxes
+    if table_exists? :dmpd_contact_card_boxes
+      drop_table :dmpd_contact_card_boxes
+    end
     drop_table :dmpd_weeks if table_exists? :dmpd_weeks
     drop_table :dmpd_appointments if table_exists? :dmpd_appointments
     drop_table :dmpd_weekly_calls if table_exists? :dmpd_weekly_calls
@@ -8,6 +10,7 @@ class UpdateForRefactor < ActiveRecord::Migration
     drop_table :weeks if table_exists? :weeks
     drop_table :appointments if table_exists? :appointments
     drop_table :weekly_calls if table_exists? :weekly_calls
+    rename_table :contacts, :dmpd_contacts if table_exists? :contacts
     rename_table :logs, :dmpd_logs
     rename_table :call_sessions, :dmpd_call_sessions
     rename_table :contact_appointments, :dmpd_contact_appointments
