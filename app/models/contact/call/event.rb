@@ -1,6 +1,7 @@
 class Contact
   class Call
     class Event < ActiveRecord::Base
+      self.table_name = 'dmpd_contact_call_events'
       belongs_to :call
       enum state: Contact::Call.states
       enum step: Contact::Call.steps

@@ -1,5 +1,6 @@
 class Contact
   class Appointment < ActiveRecord::Base
+    self.table_name = 'dmpd_contact_appointments'
     belongs_to :contact
 
     enum result: [
