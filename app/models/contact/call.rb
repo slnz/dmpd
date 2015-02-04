@@ -1,5 +1,6 @@
 class Contact
   class Call < ActiveRecord::Base
+    self.table_name = 'dmpd_contact_calls'
     belongs_to :contact
     has_many :events, dependent: :destroy
     before_create :set_reason

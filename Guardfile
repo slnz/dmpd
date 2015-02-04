@@ -2,7 +2,7 @@ guard :bundler do
   watch 'Gemfile'
 end
 
-guard :rspec, cmd: 'spring rspec', all_on_start: false do
+guard :rspec, cmd: 'bundle exec rspec', all_on_start: false do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/rails_helper.rb')  { 'spec' }

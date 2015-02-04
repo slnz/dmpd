@@ -32,10 +32,16 @@ module Dmpd
 
     config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
     config.assets.paths << Rails.root.join('vendor', 'assets', 'images')
-    config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
-    config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components', 'font-awesome', 'fonts')
+    config.assets.paths <<
+      Rails.root.join('vendor', 'assets', 'bower_components')
+    config.assets.paths <<
+      Rails.root.join('vendor',
+                      'assets',
+                      'bower_components',
+                      'font-awesome',
+                      'fonts')
 
-    config.assets.precompile.push(Proc.new do |path|
+    config.assets.precompile.push(proc do |path|
       File.extname(path).in? [
         '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
         '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts

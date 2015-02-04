@@ -1,4 +1,5 @@
 class Contact < ActiveRecord::Base
+  self.table_name = 'dmpd_contacts'
   paginates_per 500
   has_one :referer,
           class_name: 'Contact',

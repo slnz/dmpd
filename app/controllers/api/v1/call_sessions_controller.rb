@@ -58,12 +58,7 @@ module Api
       end
 
       def call_session_data
-        @data = {
-          name: current_user.first_name,
-          count: call_count,
-          partners:
-            User.where('id != ?', current_user.id).where(dmpd: true).decorate
-        }
+        @data = { name: current_user.first_name, count: call_count }
       end
 
       def call_count

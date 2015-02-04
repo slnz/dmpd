@@ -1,5 +1,6 @@
 # rubocop:disable Metrics/ClassLength
 class Log < ActiveRecord::Base
+  self.table_name = 'dmpd_logs'
   belongs_to :user
   validates :user, presence: true
   validates :start, presence: true
