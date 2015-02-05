@@ -17,5 +17,4 @@ FactoryGirl.define do
     used_contacts 1
     received_contacts 1
   end
-
 end

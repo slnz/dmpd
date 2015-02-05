@@ -7,5 +7,4 @@ FactoryGirl.define do
     status :base_new
     priority_code :A
   end
-
 end

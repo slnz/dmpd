@@ -3,5 +3,4 @@ FactoryGirl.define do
     user
     partner factory: :user
   end
-
 end

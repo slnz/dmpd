@@ -111,12 +111,14 @@ class Log < ActiveRecord::Base
 
   def set_total_monthly_confirmed
     self.total_monthly_confirmed =
-      user.contacts.confirmed.where('frequency > 0').sum('amount / frequency')
+      user.contacts.where('gift_date <= ?', Date.today)
+      .where('frequency > 0').sum('amount / frequency')
   end
 
   def set_total_special_confirmed
     self.total_special_confirmed =
-      user.contacts.confirmed.where('frequency = 0').sum(:amount)
+      user.contacts.where('gift_date <= ?', Date.today)
+      .where('frequency = 0').sum(:amount)
   end
 
   def set_used_contacts
