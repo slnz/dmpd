@@ -62,7 +62,10 @@ RSpec.describe Log, type: :model do
     end
 
     it 'set_total_monthly_confirmed' do
-      create(:contact, user: user, frequency: 1, amount: 100,
+      create(:contact,
+             user: user,
+             frequency: 1,
+             amount: 100,
              gift_date: Date.today - 2.days)
       create(:contact, user: user, frequency: 0.5, amount: 50)
       log = generate_log
@@ -70,7 +73,10 @@ RSpec.describe Log, type: :model do
     end
 
     it 'set_total_special_confirmed' do
-      create(:contact, user: user, frequency: 0, amount: 100,
+      create(:contact,
+             user: user,
+             frequency: 0,
+             amount: 100,
              gift_date: Date.today - 2.days)
       create(:contact, user: user, frequency: 0, amount: 50)
       log = generate_log
