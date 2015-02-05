@@ -37,7 +37,7 @@ RSpec.describe Log, type: :model do
       expect(log.appointment_set).to eq(2)
     end
 
-    it 'set_total_special_confirmed' do
+    it 'set_yes_to_monthly' do
       create(:contact, user: user, frequency: 0, amount: 100, confirmed: true)
       create(:contact, user: user, frequency: 0, amount: 50)
       create(:contact, user: user, frequency: 1, amount: 100, confirmed: true)
@@ -62,14 +62,22 @@ RSpec.describe Log, type: :model do
     end
 
     it 'set_total_monthly_confirmed' do
-      create(:contact, user: user, frequency: 1, amount: 100, confirmed: true)
+      create(:contact,
+             user: user,
+             frequency: 1,
+             amount: 100,
+             gift_date: Date.today - 2.days)
       create(:contact, user: user, frequency: 0.5, amount: 50)
       log = generate_log
       expect(log.total_monthly_confirmed).to eq(100)
     end
 
     it 'set_total_special_confirmed' do
-      create(:contact, user: user, frequency: 0, amount: 100, confirmed: true)
+      create(:contact,
+             user: user,
+             frequency: 0,
+             amount: 100,
+             gift_date: Date.today - 2.days)
       create(:contact, user: user, frequency: 0, amount: 50)
       log = generate_log
       expect(log.total_special_confirmed).to eq(100)

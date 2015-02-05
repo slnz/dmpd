@@ -11,5 +11,4 @@ FactoryGirl.define do
     gift_date '2014-11-19'
     gift_confirmed_date '2014-11-19'
   end
-
 end
