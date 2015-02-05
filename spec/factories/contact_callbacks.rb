@@ -5,5 +5,4 @@ FactoryGirl.define do
     notes 'MyText'
     state 1
   end
-
 end

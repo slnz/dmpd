@@ -17,5 +17,4 @@ RSpec.describe CallSession, type: :model do
       expect(call_session.end_time.round).to eq(Time.now.round)
     end
   end
-
 end

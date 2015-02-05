@@ -3,5 +3,4 @@ FactoryGirl.define do
     state 1
     step 1
   end
-
 end
